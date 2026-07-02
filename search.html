@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Homes — Dyer Realty NC</title>
+  <meta name="description" content="Search homes for sale in Raleigh, Wake Forest, Cary, and across the Triangle. Filter by price, beds, baths, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="container flex-between">
+    <a href="index.html" class="header-logo"><span class="header-logo-main">Dyer Realty NC</span><span class="header-logo-sub">Keller Williams Realty</span></a>
+    <nav><ul class="header-nav">
+      <li><a href="search.html" class="active">Search</a></li>
+      <li><a href="relocation-guide.html">Relocation</a></li>
+      <li><a href="new-construction.html">New Construction</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></nav>
+    <div class="header-actions">
+      <a href="tel:9194270069" class="header-phone"><i class="fa-solid fa-phone"></i> 919-427-0069</a>
+      <a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a>
+    </div>
+    <button class="mobile-toggle"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mobile-nav">
+  <a href="search.html">Search Homes</a><a href="relocation-guide.html">Relocation Guide</a>
+  <a href="new-construction.html">New Construction</a><a href="content-hub.html">Local Guides</a>
+  <a href="about.html">About Butch</a><a href="blog.html">Blog</a>
+  <a href="home-valuation.html">Home Valuation</a><a href="contact.html">Contact</a>
+  <div class="mobile-cta"><a href="tel:9194270069" class="btn btn-primary w-full" style="justify-content:center;"><i class="fa-solid fa-phone"></i> Call 919-427-0069</a></div>
+</nav>
+
+<!-- SEARCH HERO BAR -->
+<div style="background:var(--navy-dark);padding:28px 0;">
+  <div class="container">
+    <div class="search-bar-wrap">
+      <input type="text" class="search-field" placeholder="City, neighborhood, ZIP, or address" value="Raleigh, NC" />
+      <select class="search-select"><option>$300K–$600K</option><option>Under $300K</option><option>$600K–$900K</option><option>$900K+</option></select>
+      <select class="search-select"><option>Any Type</option><option>Single Family</option><option>Townhome</option><option>Condo</option><option>New Construction</option></select>
+      <button class="search-btn"><i class="fa-solid fa-search"></i> Search</button>
+    </div>
+  </div>
+</div>
+
+<section class="section-sm">
+  <div class="container">
+    <!-- Saved search prompt -->
+    <div class="saved-search-bar">
+      <div class="saved-search-text"><i class="fa-solid fa-bell" style="color:var(--gold);"></i> &nbsp;<strong>Get notified the moment a new match hits the market.</strong> Sign up for instant alerts for this search.</div>
+      <a href="contact.html" class="btn btn-navy btn-sm">Save This Search</a>
+    </div>
+
+    <div class="search-layout">
+      <!-- FILTER PANEL -->
+      <aside class="filter-panel">
+        <div class="filter-heading">
+          Filters <button style="font-size:12px;font-weight:600;color:var(--gold);background:none;border:none;cursor:pointer;">Reset all</button>
+        </div>
+
+        <div class="filter-section">
+          <span class="filter-label">Price Range</span>
+          <div class="range-row">
+            <input type="text" class="form-input" placeholder="Min" value="$300,000" style="font-size:13px;padding:9px 12px;" />
+            <input type="text" class="form-input" placeholder="Max" value="$700,000" style="font-size:13px;padding:9px 12px;" />
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <span class="filter-label">Bedrooms</span>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <button class="cat-btn" style="padding:5px 14px;font-size:13px;">Any</button>
+            <button class="cat-btn active" style="padding:5px 14px;font-size:13px;">2+</button>
+            <button class="cat-btn" style="padding:5px 14px;font-size:13px;">3+</button>
+            <button class="cat-btn" style="padding:5px 14px;font-size:13px;">4+</button>
+            <button class="cat-btn" style="padding:5px 14px;font-size:13px;">5+</button>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <span class="filter-label">Bathrooms</span>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <button class="cat-btn" style="padding:5px 14px;font-size:13px;">Any</button>
+            <button class="cat-btn active" style="padding:5px 14px;font-size:13px;">2+</button>
+            <button class="cat-btn" style="padding:5px 14px;font-size:13px;">3+</button>
+            <button class="cat-btn" style="padding:5px 14px;font-size:13px;">4+</button>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <span class="filter-label">Property Type</span>
+          <label class="filter-checkbox"><input type="checkbox" checked /> Single Family</label>
+          <label class="filter-checkbox"><input type="checkbox" checked /> New Construction</label>
+          <label class="filter-checkbox"><input type="checkbox" /> Townhome</label>
+          <label class="filter-checkbox"><input type="checkbox" /> Condo / Apartment</label>
+          <label class="filter-checkbox"><input type="checkbox" /> Land / Lot</label>
+        </div>
+
+        <div class="filter-section">
+          <span class="filter-label">School District</span>
+          <label class="filter-checkbox"><input type="checkbox" checked /> Wake County</label>
+          <label class="filter-checkbox"><input type="checkbox" /> Durham County</label>
+          <label class="filter-checkbox"><input type="checkbox" /> Chatham County</label>
+        </div>
+
+        <div class="filter-section">
+          <span class="filter-label">Features</span>
+          <label class="filter-checkbox"><input type="checkbox" /> Garage</label>
+          <label class="filter-checkbox"><input type="checkbox" /> Pool</label>
+          <label class="filter-checkbox"><input type="checkbox" /> Master on Main</label>
+          <label class="filter-checkbox"><input type="checkbox" /> Open Floor Plan</label>
+        </div>
+
+        <button class="btn btn-navy w-full" style="margin-top:8px;">Apply Filters</button>
+      </aside>
+
+      <!-- RESULTS -->
+      <div>
+        <div class="results-bar">
+          <div class="results-count"><strong>48 homes</strong> found near Raleigh, NC</div>
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+            <button class="map-toggle-btn" id="map-toggle"><i class="fa-solid fa-map"></i> <span class="map-label">Map View</span></button>
+            <select class="form-select" style="font-size:13px;padding:8px 12px;width:auto;"><option>Sort: Newest First</option><option>Price: Low–High</option><option>Price: High–Low</option><option>Sq Ft: Largest</option></select>
+          </div>
+        </div>
+
+        <!-- Map placeholder (hidden by default) -->
+        <div id="map-placeholder" style="display:none;height:420px;background:var(--gray-100);border-radius:var(--r);border:1px solid var(--gray-200);display:none;align-items:center;justify-content:center;font-weight:700;color:var(--gray-500);margin-bottom:28px;">
+          <div style="text-align:center;"><i class="fa-solid fa-map" style="font-size:40px;margin-bottom:12px;display:block;"></i>Interactive map view — IDX integration required</div>
+        </div>
+
+        <div id="results-grid" class="grid-auto">
+          <a href="property-detail.html" class="card-listing"><div class="card-listing-img"><span class="card-listing-badge badge-active">Active</span></div><div class="card-listing-body"><div class="listing-price">$589,000</div><div class="listing-address"><i class="fa-solid fa-location-dot"></i> 4215 Whitmore Dr, Raleigh, NC 27609</div><div class="listing-specs"><span class="listing-spec"><i class="fa-solid fa-bed"></i> 4 bd</span><span class="listing-spec"><i class="fa-solid fa-bath"></i> 3 ba</span><span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 2,840 sqft</span></div></div></a>
+
+          <a href="property-detail.html" class="card-listing"><div class="card-listing-img" style="background:linear-gradient(135deg,#b8d4c8 0%,#7ab0a0 100%);"><span class="card-listing-badge badge-new">Just Listed</span></div><div class="card-listing-body"><div class="listing-price">$412,500</div><div class="listing-address"><i class="fa-solid fa-location-dot"></i> 1203 Oak Manor Ct, Cary, NC 27519</div><div class="listing-specs"><span class="listing-spec"><i class="fa-solid fa-bed"></i> 3 bd</span><span class="listing-spec"><i class="fa-solid fa-bath"></i> 2.5 ba</span><span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 1,980 sqft</span></div></div></a>
+
+          <a href="community.html" class="card-listing"><div class="card-listing-img" style="background:linear-gradient(135deg,#c8d4b8 0%,#a0b87a 100%);"><span class="card-listing-badge badge-nc">New Construction</span></div><div class="card-listing-body"><div class="listing-price">From $485,000</div><div class="listing-address"><i class="fa-solid fa-location-dot"></i> The Reserve at Stonecroft, Wake Forest</div><div class="listing-specs"><span class="listing-spec"><i class="fa-solid fa-bed"></i> 3–5 bd</span><span class="listing-spec"><i class="fa-solid fa-bath"></i> 2–4 ba</span><span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 2,100–3,600 sqft</span></div></div></a>
+
+          <a href="property-detail.html" class="card-listing"><div class="card-listing-img" style="background:linear-gradient(135deg,#d4c8b8 0%,#b09870 100%);"><span class="card-listing-badge badge-active">Active</span></div><div class="card-listing-body"><div class="listing-price">$725,000</div><div class="listing-address"><i class="fa-solid fa-location-dot"></i> 892 Sunrise Valley Ln, Apex, NC 27502</div><div class="listing-specs"><span class="listing-spec"><i class="fa-solid fa-bed"></i> 5 bd</span><span class="listing-spec"><i class="fa-solid fa-bath"></i> 4 ba</span><span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 3,420 sqft</span></div></div></a>
+
+          <a href="property-detail.html" class="card-listing"><div class="card-listing-img" style="background:linear-gradient(135deg,#b8c8d4 0%,#80a8c0 100%);"><span class="card-listing-badge badge-active">Active</span></div><div class="card-listing-body"><div class="listing-price">$365,000</div><div class="listing-address"><i class="fa-solid fa-location-dot"></i> 310 Fernwood Blvd, Durham, NC 27703</div><div class="listing-specs"><span class="listing-spec"><i class="fa-solid fa-bed"></i> 3 bd</span><span class="listing-spec"><i class="fa-solid fa-bath"></i> 2 ba</span><span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 1,640 sqft</span></div></div></a>
+
+          <a href="property-detail.html" class="card-listing"><div class="card-listing-img" style="background:linear-gradient(135deg,#d4b8d0 0%,#b080a8 100%);"><span class="card-listing-badge badge-new">Just Listed</span></div><div class="card-listing-body"><div class="listing-price">$550,000</div><div class="listing-address"><i class="fa-solid fa-location-dot"></i> 2740 Raven Creek Rd, Raleigh, NC 27615</div><div class="listing-specs"><span class="listing-spec"><i class="fa-solid fa-bed"></i> 4 bd</span><span class="listing-spec"><i class="fa-solid fa-bath"></i> 3.5 ba</span><span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 2,600 sqft</span></div></div></a>
+        </div>
+
+        <div style="text-align:center;margin-top:40px;display:flex;align-items:center;justify-content:center;gap:8px;">
+          <button class="btn btn-outline" style="padding:10px 20px;font-size:13px;">1</button>
+          <button class="btn btn-navy" style="padding:10px 20px;font-size:13px;">2</button>
+          <button class="btn btn-outline" style="padding:10px 20px;font-size:13px;">3</button>
+          <span style="color:var(--gray-400);">…</span>
+          <button class="btn btn-outline" style="padding:10px 20px;font-size:13px;">Next <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-main"><div class="container"><div class="footer-grid">
+    <div class="footer-brand footer-col"><span class="footer-logo-main">Dyer Realty NC</span><span class="footer-logo-sub">Keller Williams Realty</span><p class="footer-tagline">Raleigh's trusted real estate partner for over 40 years.</p><div class="footer-social"><a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a><a href="#" class="footer-social-btn"><i class="fa-brands fa-youtube"></i></a></div></div>
+    <div class="footer-col"><div class="footer-col-title">Navigate</div><ul><li><a href="search.html">Search Homes</a></li><li><a href="relocation-guide.html">Relocation Guide</a></li><li><a href="new-construction.html">New Construction</a></li><li><a href="about.html">About Butch</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+    <div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="home-valuation.html">Home Valuation</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><div class="footer-contact-item"><strong>Phone</strong><a href="tel:9194270069">919-427-0069</a></div><div class="footer-contact-item"><strong>Email</strong><a href="mailto:butch@dyerrealtync.com">butch@dyerrealtync.com</a></div></div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="container"><div class="footer-bottom-inner"><div class="footer-compliance"><div class="footer-badge-box">KW Keller Williams</div><div class="footer-eho">EHO</div><div class="footer-legal-text">Licensed in NC &nbsp;·&nbsp; NCREC #XXXXXX</div></div><div class="footer-copyright">&copy; 2025 Dyer Realty NC. All rights reserved.</div></div></div></div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
