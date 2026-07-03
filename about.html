@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Butch Dyer — Raleigh's Trusted REALTOR® — Dyer Realty NC</title>
+  <title>About Butch Dyer — Raleigh's Trusted REALTOR® | Butch Dyer</title>
   <meta name="description" content="Meet Butch Dyer — 40+ year Raleigh real estate expert, relocation specialist, new construction insider, and active community leader." />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -12,7 +12,7 @@
 <body>
 <header class="site-header">
   <div class="container flex-between">
-    <a href="index.html" class="header-logo"><span class="header-logo-main">Dyer Realty NC</span><span class="header-logo-sub">Keller Williams Realty</span></a>
+    <a href="index.html" class="header-logo"><span class="header-logo-main">Butch Dyer</span><span class="header-logo-sub">REALTOR® · KW Raleigh</span></a>
     <nav><ul class="header-nav"><li><a href="search.html">Search</a></li><li><a href="relocation-guide.html">Relocation</a></li><li><a href="new-construction.html">New Construction</a></li><li><a href="about.html" class="active">About</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
     <div class="header-actions"><a href="tel:9194270069" class="header-phone"><i class="fa-solid fa-phone"></i> 919-427-0069</a><a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a></div>
     <button class="mobile-toggle"><span></span><span></span><span></span></button>
@@ -36,7 +36,7 @@
         <div class="about-photo-wrap" style="margin-bottom:28px;">
           <div class="about-circle">
             <i class="fa-solid fa-user" style="font-size:72px;opacity:.25;"></i>
-            <div class="about-kw-badge">KW Raleigh</div>
+            <div class="about-kw-badge" id="brokerage-photo-badge">KW Raleigh</div>
           </div>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:24px;">
@@ -57,15 +57,12 @@
           <span class="cert-badge">CRS</span><span class="cert-badge">ABR</span>
           <span class="cert-badge">GRI</span><span class="cert-badge">e-PRO</span><span class="cert-badge">SRES</span>
         </div>
-        <div style="text-align:center;margin-top:20px;font-size:13px;color:var(--gray-500);">
-          NCREC License #XXXXXX<br>
-          Keller Williams Realty, Raleigh, NC
-        </div>
+        <div style="text-align:center;margin-top:20px;font-size:13px;color:var(--gray-500);">NCREC License #XXXXXX<br><span id="brokerage-credit">Currently at Keller Williams Realty, Raleigh, NC</span></div>
       </div>
       <div>
         <span class="eyebrow">The Full Story</span>
         <div class="about-name">Butch Dyer</div>
-        <div class="about-title-line">REALTOR® &nbsp;·&nbsp; KW Raleigh &nbsp;·&nbsp; Relocation & New Construction Specialist</div>
+        <div class="about-title-line">REALTOR® &nbsp;·&nbsp; Relocation &amp; New Construction Specialist</div>
 
         <p class="about-bio">I got my real estate license in 1984 — the same year Raleigh was beginning to feel the first stirrings of the growth that would transform it into the city it is today. I didn't know then that I'd spend the next four decades watching it happen, neighborhood by neighborhood, family by family.</p>
 
@@ -141,7 +138,7 @@
     <div class="section-header centered">
       <span class="eyebrow">Growing Together</span>
       <h2>The Team</h2>
-      <p class="lead" style="max-width:520px;margin:12px auto 0;">Dyer Realty NC is built for growth. Watch this space for team expansion in 2025 and beyond.</p>
+      <p class="lead" style="max-width:520px;margin:12px auto 0;">Built for growth. Watch this space.</p>
     </div>
     <div class="grid-2" style="max-width:800px;margin:0 auto;">
       <div style="background:var(--white);border-radius:var(--r);padding:32px;border:1px solid var(--gray-200);box-shadow:var(--shadow-sm);">
@@ -154,9 +151,7 @@
       </div>
       <div style="background:var(--gray-50);border-radius:var(--r);padding:32px;border:2px dashed var(--gray-300);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
         <i class="fa-solid fa-plus" style="font-size:28px;color:var(--gray-300);margin-bottom:12px;"></i>
-        <div style="font-size:15px;font-weight:700;color:var(--gray-500);">Kelly Dyer</div>
-        <div style="font-size:13px;color:var(--gray-400);margin-top:4px;">Coming Soon</div>
-        <div style="font-size:12px;color:var(--gray-400);margin-top:8px;">Associate Agent profile launching 2025</div>
+        <div style="font-size:14px;font-weight:600;color:var(--gray-400);">Team member coming soon</div>
       </div>
     </div>
   </div>
@@ -179,13 +174,14 @@
 
 <footer class="site-footer">
   <div class="footer-main"><div class="container"><div class="footer-grid">
-    <div class="footer-brand footer-col"><span class="footer-logo-main">Dyer Realty NC</span><span class="footer-logo-sub">Keller Williams Realty</span><p class="footer-tagline">Raleigh's trusted real estate partner for over 40 years.</p></div>
+    <div class="footer-brand footer-col"><span class="footer-logo-main">Butch Dyer</span><span class="footer-logo-sub" id="brokerage-affiliation">Keller Williams Realty</span><p class="footer-tagline">Raleigh's trusted real estate expert for over 40 years.</p></div>
     <div class="footer-col"><div class="footer-col-title">Navigate</div><ul><li><a href="search.html">Search Homes</a></li><li><a href="relocation-guide.html">Relocation Guide</a></li><li><a href="new-construction.html">New Construction</a></li><li><a href="about.html">About Butch</a></li></ul></div>
     <div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="home-valuation.html">Home Valuation</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li></ul></div>
-    <div class="footer-col"><div class="footer-col-title">Contact</div><div class="footer-contact-item"><strong>Phone</strong><a href="tel:9194270069">919-427-0069</a></div><div class="footer-contact-item"><strong>Email</strong><a href="mailto:butch@dyerrealtync.com">butch@dyerrealtync.com</a></div></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><div class="footer-contact-item"><strong>Phone</strong><a href="tel:9194270069">919-427-0069</a></div><div class="footer-contact-item"><strong>Email</strong><a href="mailto:butch@butchdyer.com">butch@butchdyer.com</a></div></div>
   </div></div></div>
-  <div class="footer-bottom"><div class="container"><div class="footer-bottom-inner"><div class="footer-compliance"><div class="footer-badge-box">KW Keller Williams</div><div class="footer-eho">EHO</div><div class="footer-legal-text">Licensed in NC · NCREC #XXXXXX</div></div><div class="footer-copyright">&copy; 2025 Dyer Realty NC.</div></div></div></div>
+  <div class="footer-bottom"><div class="container"><div class="footer-bottom-inner"><div class="footer-compliance"><div id="brokerage-badge" class="footer-badge-box">KW Keller Williams</div><div class="footer-eho">EHO</div><div class="footer-legal-text">Licensed in NC · NCREC #XXXXXX</div></div><div class="footer-copyright">&copy; 2025 Butch Dyer.</div></div></div></div>
 </footer>
+<script src="js/config.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
