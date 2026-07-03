@@ -369,6 +369,7 @@ p:last-child { margin-bottom: 0; }
 .step-num { width: 48px; height: 48px; background: var(--navy); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; flex-shrink: 0; font-family: var(--font-head); }
 .step-content h4 { margin-bottom: 6px; color: var(--navy); }
 .step-content p { font-size: 14px; color: var(--gray-600); margin: 0; }
+.info-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
 .info-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--r); padding: 28px; border-top: 3px solid var(--gold); }
 .info-card h4 { color: var(--navy); margin-bottom: 12px; }
 .info-card p, .info-card li { font-size: 14px; color: var(--gray-600); line-height: 1.7; }
@@ -446,6 +447,7 @@ p:last-child { margin-bottom: 0; }
   .mobile-toggle { display: flex; }
   .header-actions .btn { display: none; }
   .grid-2,.grid-3,.grid-4 { grid-template-columns: 1fr; }
+  .info-grid { grid-template-columns: 1fr; }
   .value-grid-3 { grid-template-columns: 1fr; }
   .value-item { border-right: none; border-bottom: 1px solid var(--gray-200); }
   .value-item:last-child { border-bottom: none; }
@@ -477,4 +479,173 @@ p:last-child { margin-bottom: 0; }
   .footer-compliance { flex-direction: column; align-items: flex-start; }
   .error-code { font-size: 80px; }
   .category-filter { gap: 6px; }
+}
+
+/* ================================================================
+   PHASE 2 — UX GAPS ADDITIONS
+   ================================================================ */
+
+/* HERO ADDITIONS */
+.hero-agent-tag { font-size: 14px; color: rgba(255,255,255,.65); font-weight: 600; letter-spacing: .05em; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.hero-agent-tag::before, .hero-agent-tag::after { content: ''; display: inline-block; width: 40px; height: 1px; background: rgba(255,255,255,.25); }
+
+/* PROCESS STEPS — "How Butch Helps You" */
+.steps-process { display: grid; grid-template-columns: repeat(4,1fr); gap: 4px; }
+.step-card { text-align: center; padding: 32px 20px; position: relative; }
+.step-card:not(:last-child)::after { content: ''; position: absolute; top: 52px; right: -2px; width: 4px; height: 4px; background: var(--gray-300); border-radius: 50%; }
+.step-num-circle { width: 64px; height: 64px; border-radius: 50%; background: var(--navy); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800; font-family: var(--font-head); margin: 0 auto 20px; box-shadow: var(--shadow); border: 3px solid var(--white); }
+.step-card-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.step-card-desc { font-size: 13px; color: var(--gray-500); line-height: 1.65; margin: 0; }
+
+/* SEGMENTATION PATHS */
+.segment-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.segment-card { border-radius: var(--r); padding: 36px 24px; text-align: center; border: 2px solid var(--gray-200); transition: all var(--t); text-decoration: none; display: block; background: var(--white); }
+.segment-card:hover { border-color: var(--navy); transform: translateY(-4px); box-shadow: var(--shadow); }
+.segment-card.featured { border-color: var(--gold); background: linear-gradient(160deg, var(--gold-pale) 0%, #f8eedc 100%); }
+.segment-card.featured:hover { box-shadow: 0 8px 32px rgba(201,150,59,.25); }
+.segment-icon { width: 72px; height: 72px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 28px; }
+.segment-icon-navy { background: var(--navy); color: var(--white); }
+.segment-icon-gold { background: var(--gold); color: var(--white); }
+.segment-title { font-size: 20px; font-weight: 700; font-family: var(--font-head); color: var(--navy); margin-bottom: 10px; }
+.segment-desc { font-size: 14px; color: var(--gray-600); line-height: 1.65; margin-bottom: 18px; }
+.segment-link-text { font-size: 13px; font-weight: 700; color: var(--gold); display: flex; align-items: center; justify-content: center; gap: 6px; }
+
+/* LEAD MAGNET CARDS */
+.lead-magnet-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.lead-magnet-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--r); padding: 28px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; transition: box-shadow var(--t), transform var(--t); }
+.lead-magnet-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.lead-magnet-icon { width: 52px; height: 52px; background: var(--navy); border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 20px; margin-bottom: 16px; }
+.lead-magnet-title { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 6px; font-family: var(--font-head); }
+.lead-magnet-desc { font-size: 13px; color: var(--gray-500); margin-bottom: 18px; line-height: 1.6; flex: 1; }
+.lead-magnet-confirm { display: none; text-align: center; padding: 12px 0 4px; }
+
+/* ASK BUTCH WIDGET */
+.ask-butch-section { background: var(--navy-dark); }
+.ask-butch-inner { max-width: 580px; margin: 0 auto; text-align: center; }
+.ask-butch-inner h2 { color: var(--white); }
+.ask-butch-inner .lead { color: rgba(255,255,255,.65); margin-bottom: 32px; }
+.ask-butch-form .form-input, .ask-butch-form .form-textarea { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.18); color: var(--white); text-align: left; }
+.ask-butch-form .form-input::placeholder, .ask-butch-form .form-textarea::placeholder { color: rgba(255,255,255,.35); }
+.ask-butch-form .form-input:focus, .ask-butch-form .form-textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,150,59,.15); }
+.ask-butch-form .form-label { color: rgba(255,255,255,.55); text-align: left; display: block; }
+
+/* NARRATIVE — "Why Clients Choose Butch" */
+.narrative-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.narrative-item { display: flex; gap: 20px; align-items: flex-start; }
+.narrative-num { width: 44px; height: 44px; background: var(--gold-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 18px; font-weight: 800; font-family: var(--font-head); flex-shrink: 0; }
+.narrative-title { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.narrative-text { font-size: 14px; color: var(--gray-600); line-height: 1.8; margin: 0; }
+
+/* CASE STUDY CARDS */
+.card-case-study { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--r); padding: 32px; box-shadow: var(--shadow-sm); border-top: 3px solid var(--gold); display: flex; flex-direction: column; }
+.case-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--gold); margin-bottom: 12px; display: block; }
+.case-title { font-size: 17px; font-weight: 700; color: var(--navy); font-family: var(--font-head); margin-bottom: 14px; }
+.case-section { margin-bottom: 12px; }
+.case-section-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--gray-400); margin-bottom: 4px; }
+.case-section-text { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin: 0; }
+.case-meta { display: flex; align-items: center; gap: 12px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--gray-100); }
+.case-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--gray-200); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--gray-400); }
+.case-client-name { font-size: 13px; font-weight: 700; color: var(--navy); }
+.case-client-detail { font-size: 11px; color: var(--gray-400); }
+
+/* VIDEO INTRO */
+.video-intro-section { background: var(--off-white); }
+.video-intro-wrap { border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow-lg); }
+.video-embed-placeholder { height: 380px; background: linear-gradient(160deg, var(--navy-dark) 0%, #1a3d6e 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; position: relative; }
+.video-embed-placeholder::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 24px 24px; }
+.video-play-btn { width: 76px; height: 76px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 26px; cursor: pointer; transition: transform var(--t), box-shadow var(--t); padding-left: 5px; position: relative; z-index: 1; }
+.video-play-btn:hover { transform: scale(1.12); box-shadow: 0 8px 32px rgba(201,150,59,.5); }
+.video-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--gold); position: relative; z-index: 1; }
+.video-caption { font-size: 13px; color: rgba(255,255,255,.45); position: relative; z-index: 1; text-align: center; }
+
+/* WHY WORK WITH BUTCH — DIFFERENTIATION BLOCK */
+.diff-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 20px; }
+.diff-item { text-align: center; padding: 28px 16px; }
+.diff-icon { width: 58px; height: 58px; background: var(--gold-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 22px; margin: 0 auto 14px; }
+.diff-title { font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1.45; }
+.diff-sub { font-size: 12px; color: var(--gray-500); margin-top: 4px; margin-bottom: 0; }
+
+/* FAVORITES BUTTON ON LISTINGS */
+.card-listing { position: relative; }
+.btn-fav { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.92); backdrop-filter: blur(4px); border: 1px solid rgba(0,0,0,.08); display: flex; align-items: center; justify-content: center; font-size: 15px; color: var(--gray-400); cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.12); transition: all var(--t); z-index: 2; }
+.btn-fav:hover { color: #e53e3e; transform: scale(1.12); }
+.btn-fav.active { color: #e53e3e; }
+
+/* SAVE SEARCH */
+.save-search-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--navy); background: var(--white); border: 1.5px solid var(--gray-300); border-radius: var(--r-sm); padding: 7px 16px; cursor: pointer; transition: all var(--t); }
+.save-search-btn:hover { border-color: var(--navy); background: var(--navy); color: var(--white); }
+.saved-panel { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--r); padding: 18px 20px; margin-bottom: 20px; display: none; }
+.saved-panel-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--gray-500); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.saved-list { display: flex; flex-direction: column; }
+.saved-search-item { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--gray-100); }
+.saved-search-item:last-child { border-bottom: none; }
+.saved-search-remove { background: none; border: none; color: var(--gray-400); cursor: pointer; font-size: 13px; padding: 2px 4px; transition: color var(--t); flex-shrink: 0; }
+.saved-search-remove:hover { color: #e53e3e; }
+.fav-badge-count { display: none; background: #e53e3e; color: var(--white); font-size: 10px; font-weight: 800; border-radius: 99px; padding: 1px 5px; line-height: 1.4; margin-left: 2px; }
+
+/* MODAL */
+.modal-overlay { position: fixed; inset: 0; background: rgba(15,36,56,.55); z-index: 300; display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity var(--t); }
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-box { background: var(--white); border-radius: var(--r); padding: 36px; max-width: 440px; width: 100%; box-shadow: var(--shadow-xl); transform: translateY(16px); transition: transform var(--t); position: relative; }
+.modal-overlay.open .modal-box { transform: translateY(0); }
+.modal-title { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 6px; font-family: var(--font-head); }
+.modal-subtitle { font-size: 14px; color: var(--gray-500); margin-bottom: 22px; }
+.modal-close { position: absolute; top: 14px; right: 16px; background: none; border: none; font-size: 18px; color: var(--gray-400); cursor: pointer; line-height: 1; padding: 4px; }
+.modal-close:hover { color: var(--gray-700); }
+
+/* NEWSLETTER SECTION */
+.newsletter-section { background: var(--navy); }
+.newsletter-inner { max-width: 520px; margin: 0 auto; text-align: center; }
+.newsletter-inner h2 { color: var(--white); }
+.newsletter-inner .lead { color: rgba(255,255,255,.65); margin-bottom: 28px; }
+
+/* FINAL CTA */
+.section-final-cta { background: linear-gradient(160deg, var(--navy-dark) 0%, #1a3d6e 50%, var(--navy) 100%); padding: var(--py) 0; position: relative; overflow: hidden; }
+.section-final-cta::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(201,150,59,.07) 1px, transparent 1px); background-size: 32px 32px; }
+.final-cta-inner { position: relative; z-index: 1; text-align: center; }
+.final-cta-inner h2 { color: var(--white); font-size: clamp(26px, 4vw, 44px); margin-bottom: 14px; }
+.final-cta-inner p { color: rgba(255,255,255,.7); font-size: 18px; max-width: 500px; margin: 0 auto 36px; line-height: 1.7; }
+.final-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* NEIGHBORHOOD COMPARE (relocation page) */
+.neighborhood-compare-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.ncg-card { background: var(--white); border-radius: var(--r); border: 1px solid var(--gray-200); overflow: hidden; box-shadow: var(--shadow-sm); transition: box-shadow var(--t), transform var(--t); }
+.ncg-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.ncg-header { padding: 18px 20px; border-bottom: 3px solid var(--gold); background: var(--off-white); }
+.ncg-name { font-size: 17px; font-weight: 700; color: var(--navy); font-family: var(--font-head); }
+.ncg-vibe { font-size: 11px; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-top: 3px; }
+.ncg-body { padding: 16px 20px; }
+.ncg-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--gray-100); font-size: 13px; }
+.ncg-row:last-child { border-bottom: none; }
+.ncg-key { color: var(--gray-500); }
+.ncg-val { color: var(--navy); font-weight: 700; }
+
+/* LIFESTYLE GUIDES */
+.lifestyle-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.lifestyle-card { padding: 18px 20px; border-radius: var(--r); border: 1.5px solid var(--gray-200); display: flex; align-items: center; gap: 14px; text-decoration: none; transition: all var(--t); background: var(--white); }
+.lifestyle-card:hover { border-color: var(--navy); background: var(--off-white); transform: translateX(4px); }
+.lifestyle-card i { color: var(--gold); font-size: 20px; flex-shrink: 0; width: 24px; text-align: center; }
+.lifestyle-label { font-size: 14px; font-weight: 700; color: var(--navy); }
+.lifestyle-sub { font-size: 12px; color: var(--gray-500); margin-top: 1px; }
+
+/* RESPONSIVE — PHASE 2 */
+@media (max-width: 1024px) {
+  .diff-grid { grid-template-columns: repeat(3,1fr); }
+  .lead-magnet-grid { grid-template-columns: repeat(2,1fr); }
+  .neighborhood-compare-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 768px) {
+  .steps-process { grid-template-columns: 1fr 1fr; }
+  .step-card:not(:last-child)::after { display: none; }
+  .segment-grid { grid-template-columns: 1fr; gap: 14px; }
+  .narrative-grid { grid-template-columns: 1fr; }
+  .diff-grid { grid-template-columns: repeat(2,1fr); }
+  .lead-magnet-grid { grid-template-columns: 1fr; }
+  .neighborhood-compare-grid { grid-template-columns: 1fr; }
+  .lifestyle-grid { grid-template-columns: 1fr; }
+  .final-cta-btns { flex-direction: column; align-items: center; }
+}
+@media (max-width: 480px) {
+  .steps-process { grid-template-columns: 1fr; }
+  .diff-grid { grid-template-columns: repeat(2,1fr); }
 }
