@@ -24,14 +24,19 @@
       <a href="tel:9194270069" class="header-phone"><i class="fa-solid fa-phone"></i> 919-427-0069</a>
       <a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a>
     </div>
-    <button class="mobile-toggle"><span></span><span></span><span></span></button>
+    <button class="mobile-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 <nav class="mobile-nav">
-  <a href="search.html">Search Homes</a><a href="relocation-guide.html">Relocation Guide</a>
-  <a href="new-construction.html">New Construction</a><a href="content-hub.html">Local Guides</a>
-  <a href="about.html">About Butch</a><a href="blog.html">Blog</a>
-  <a href="home-valuation.html">Home Valuation</a><a href="contact.html">Contact</a>
+  <a href="search.html"><i class="fa-solid fa-search fa-fw"></i> Search Homes</a>
+  <a href="relocation-guide.html"><i class="fa-solid fa-map fa-fw"></i> Relocation Guide</a>
+  <a href="new-construction.html"><i class="fa-solid fa-building fa-fw"></i> New Construction</a>
+  <a href="content-hub.html"><i class="fa-solid fa-play-circle fa-fw"></i> Local Guides</a>
+  <a href="about.html"><i class="fa-solid fa-user fa-fw"></i> About Butch</a>
+  <a href="blog.html"><i class="fa-solid fa-pen fa-fw"></i> Blog</a>
+  <a href="home-valuation.html"><i class="fa-solid fa-dollar-sign fa-fw"></i> Home Valuation</a>
+  <a href="resources.html"><i class="fa-solid fa-file-pdf fa-fw"></i> Free Guides</a>
+  <a href="contact.html"><i class="fa-solid fa-envelope fa-fw"></i> Contact</a>
   <div class="mobile-cta"><a href="tel:9194270069" class="btn btn-primary w-full" style="justify-content:center;"><i class="fa-solid fa-phone"></i> Call 919-427-0069</a></div>
 </nav>
 
@@ -49,10 +54,23 @@
 
 <section class="section-sm">
   <div class="container">
-    <!-- Saved search prompt -->
+
+    <!-- SAVED SEARCHES PANEL (shown by JS when searches exist) -->
+    <div id="saved-searches-panel" style="display:none;margin-bottom:20px;background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:var(--r);padding:16px 20px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <i class="fa-solid fa-bookmark" style="color:var(--gold);"></i>
+        <strong style="color:var(--navy);font-size:14px;">Your Saved Searches</strong>
+      </div>
+      <div class="saved-list"></div>
+    </div>
+
+    <!-- Save search prompt -->
     <div class="saved-search-bar">
-      <div class="saved-search-text"><i class="fa-solid fa-bell" style="color:var(--gold);"></i> &nbsp;<strong>Get notified the moment a new match hits the market.</strong> Sign up for instant alerts for this search.</div>
-      <a href="contact.html" class="btn btn-navy btn-sm">Save This Search</a>
+      <div class="saved-search-text">
+        <i class="fa-solid fa-bell" style="color:var(--gold);"></i>
+        &nbsp;<strong>Get notified the moment a new match hits the market.</strong> Sign up for instant alerts for this search.
+      </div>
+      <button class="btn btn-navy btn-sm save-search-btn"><i class="fa-solid fa-bookmark"></i> Save This Search</button>
     </div>
 
     <div class="search-layout">
@@ -116,6 +134,12 @@
         </div>
 
         <button class="btn btn-navy w-full" style="margin-top:8px;">Apply Filters</button>
+
+        <!-- Favorites shortcut in sidebar -->
+        <div style="margin-top:20px;padding:14px;background:var(--off-white);border-radius:var(--r-sm);border:1px solid var(--gray-200);">
+          <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;"><i class="fa-solid fa-heart" style="color:#e53e3e;"></i> &nbsp;Saved Favorites</div>
+          <div style="font-size:12px;color:var(--gray-500);">Heart any listing to save it here. <span class="fav-badge-count" style="display:none;background:var(--gold);color:var(--white);border-radius:999px;padding:1px 7px;font-size:11px;font-weight:700;">0</span></div>
+        </div>
       </aside>
 
       <!-- RESULTS -->
@@ -123,28 +147,121 @@
         <div class="results-bar">
           <div class="results-count"><strong>48 homes</strong> found near Raleigh, NC</div>
           <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+            <button class="save-search-btn map-toggle-btn" style="background:none;border:1px solid var(--gray-200);padding:7px 14px;border-radius:var(--r-sm);font-size:13px;font-weight:600;color:var(--navy);cursor:pointer;gap:6px;display:inline-flex;align-items:center;">
+              <i class="fa-solid fa-bookmark"></i> Save Search
+            </button>
             <button class="map-toggle-btn" id="map-toggle"><i class="fa-solid fa-map"></i> <span class="map-label">Map View</span></button>
             <select class="form-select" style="font-size:13px;padding:8px 12px;width:auto;"><option>Sort: Newest First</option><option>Price: Low–High</option><option>Price: High–Low</option><option>Sq Ft: Largest</option></select>
           </div>
         </div>
 
         <!-- Map placeholder (hidden by default) -->
-        <div id="map-placeholder" style="display:none;height:420px;background:var(--gray-100);border-radius:var(--r);border:1px solid var(--gray-200);display:none;align-items:center;justify-content:center;font-weight:700;color:var(--gray-500);margin-bottom:28px;">
+        <div id="map-placeholder" style="display:none;height:420px;background:var(--gray-100);border-radius:var(--r);border:1px solid var(--gray-200);align-items:center;justify-content:center;font-weight:700;color:var(--gray-500);margin-bottom:28px;">
           <div style="text-align:center;"><i class="fa-solid fa-map" style="font-size:40px;margin-bottom:12px;display:block;"></i>Interactive map view — IDX integration required</div>
         </div>
 
         <div id="results-grid" class="grid-auto">
-          <a href="property-detail.html" class="card-listing"><div class="card-listing-img"><span class="card-listing-badge badge-active">Active</span></div><div class="card-listing-body"><div class="listing-price">$589,000</div><div class="listing-address"><i class="fa-solid fa-location-dot"></i> 4215 Whitmore Dr, Raleigh, NC 27609</div><div class="listing-specs"><span class="listing-spec"><i class="fa-solid fa-bed"></i> 4 bd</span><span class="listing-spec"><i class="fa-solid fa-bath"></i> 3 ba</span><span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 2,840 sqft</span></div></div></a>
+          <!-- Listing 1 -->
+          <a href="property-detail.html" class="card-listing">
+            <div class="card-listing-img">
+              <span class="card-listing-badge badge-active">Active</span>
+              <button class="btn-fav" data-listing-id="srch-001" title="Save to favorites"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="card-listing-body">
+              <div class="listing-price">$589,000</div>
+              <div class="listing-address"><i class="fa-solid fa-location-dot"></i> 4215 Whitmore Dr, Raleigh, NC 27609</div>
+              <div class="listing-specs">
+                <span class="listing-spec"><i class="fa-solid fa-bed"></i> 4 bd</span>
+                <span class="listing-spec"><i class="fa-solid fa-bath"></i> 3 ba</span>
+                <span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 2,840 sqft</span>
+              </div>
+            </div>
+          </a>
 
-          <a href="property-detail.html" class="card-listing"><div class="card-listing-img" style="background:linear-gradient(135deg,#b8d4c8 0%,#7ab0a0 100%);"><span class="card-listing-badge badge-new">Just Listed</span></div><div class="card-listing-body"><div class="listing-price">$412,500</div><div class="listing-address"><i class="fa-solid fa-location-dot"></i> 1203 Oak Manor Ct, Cary, NC 27519</div><div class="listing-specs"><span class="listing-spec"><i class="fa-solid fa-bed"></i> 3 bd</span><span class="listing-spec"><i class="fa-solid fa-bath"></i> 2.5 ba</span><span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 1,980 sqft</span></div></div></a>
+          <!-- Listing 2 -->
+          <a href="property-detail.html" class="card-listing">
+            <div class="card-listing-img" style="background:linear-gradient(135deg,#b8d4c8 0%,#7ab0a0 100%);">
+              <span class="card-listing-badge badge-new">Just Listed</span>
+              <button class="btn-fav" data-listing-id="srch-002" title="Save to favorites"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="card-listing-body">
+              <div class="listing-price">$412,500</div>
+              <div class="listing-address"><i class="fa-solid fa-location-dot"></i> 1203 Oak Manor Ct, Cary, NC 27519</div>
+              <div class="listing-specs">
+                <span class="listing-spec"><i class="fa-solid fa-bed"></i> 3 bd</span>
+                <span class="listing-spec"><i class="fa-solid fa-bath"></i> 2.5 ba</span>
+                <span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 1,980 sqft</span>
+              </div>
+            </div>
+          </a>
 
-          <a href="community.html" class="card-listing"><div class="card-listing-img" style="background:linear-gradient(135deg,#c8d4b8 0%,#a0b87a 100%);"><span class="card-listing-badge badge-nc">New Construction</span></div><div class="card-listing-body"><div class="listing-price">From $485,000</div><div class="listing-address"><i class="fa-solid fa-location-dot"></i> The Reserve at Stonecroft, Wake Forest</div><div class="listing-specs"><span class="listing-spec"><i class="fa-solid fa-bed"></i> 3–5 bd</span><span class="listing-spec"><i class="fa-solid fa-bath"></i> 2–4 ba</span><span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 2,100–3,600 sqft</span></div></div></a>
+          <!-- Listing 3 -->
+          <a href="community.html" class="card-listing">
+            <div class="card-listing-img" style="background:linear-gradient(135deg,#c8d4b8 0%,#a0b87a 100%);">
+              <span class="card-listing-badge badge-nc">New Construction</span>
+              <button class="btn-fav" data-listing-id="srch-003" title="Save to favorites"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="card-listing-body">
+              <div class="listing-price">From $485,000</div>
+              <div class="listing-address"><i class="fa-solid fa-location-dot"></i> The Reserve at Stonecroft, Wake Forest</div>
+              <div class="listing-specs">
+                <span class="listing-spec"><i class="fa-solid fa-bed"></i> 3–5 bd</span>
+                <span class="listing-spec"><i class="fa-solid fa-bath"></i> 2–4 ba</span>
+                <span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 2,100–3,600 sqft</span>
+              </div>
+            </div>
+          </a>
 
-          <a href="property-detail.html" class="card-listing"><div class="card-listing-img" style="background:linear-gradient(135deg,#d4c8b8 0%,#b09870 100%);"><span class="card-listing-badge badge-active">Active</span></div><div class="card-listing-body"><div class="listing-price">$725,000</div><div class="listing-address"><i class="fa-solid fa-location-dot"></i> 892 Sunrise Valley Ln, Apex, NC 27502</div><div class="listing-specs"><span class="listing-spec"><i class="fa-solid fa-bed"></i> 5 bd</span><span class="listing-spec"><i class="fa-solid fa-bath"></i> 4 ba</span><span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 3,420 sqft</span></div></div></a>
+          <!-- Listing 4 -->
+          <a href="property-detail.html" class="card-listing">
+            <div class="card-listing-img" style="background:linear-gradient(135deg,#d4c8b8 0%,#b09870 100%);">
+              <span class="card-listing-badge badge-active">Active</span>
+              <button class="btn-fav" data-listing-id="srch-004" title="Save to favorites"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="card-listing-body">
+              <div class="listing-price">$725,000</div>
+              <div class="listing-address"><i class="fa-solid fa-location-dot"></i> 892 Sunrise Valley Ln, Apex, NC 27502</div>
+              <div class="listing-specs">
+                <span class="listing-spec"><i class="fa-solid fa-bed"></i> 5 bd</span>
+                <span class="listing-spec"><i class="fa-solid fa-bath"></i> 4 ba</span>
+                <span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 3,420 sqft</span>
+              </div>
+            </div>
+          </a>
 
-          <a href="property-detail.html" class="card-listing"><div class="card-listing-img" style="background:linear-gradient(135deg,#b8c8d4 0%,#80a8c0 100%);"><span class="card-listing-badge badge-active">Active</span></div><div class="card-listing-body"><div class="listing-price">$365,000</div><div class="listing-address"><i class="fa-solid fa-location-dot"></i> 310 Fernwood Blvd, Durham, NC 27703</div><div class="listing-specs"><span class="listing-spec"><i class="fa-solid fa-bed"></i> 3 bd</span><span class="listing-spec"><i class="fa-solid fa-bath"></i> 2 ba</span><span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 1,640 sqft</span></div></div></a>
+          <!-- Listing 5 -->
+          <a href="property-detail.html" class="card-listing">
+            <div class="card-listing-img" style="background:linear-gradient(135deg,#b8c8d4 0%,#80a8c0 100%);">
+              <span class="card-listing-badge badge-active">Active</span>
+              <button class="btn-fav" data-listing-id="srch-005" title="Save to favorites"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="card-listing-body">
+              <div class="listing-price">$365,000</div>
+              <div class="listing-address"><i class="fa-solid fa-location-dot"></i> 310 Fernwood Blvd, Durham, NC 27703</div>
+              <div class="listing-specs">
+                <span class="listing-spec"><i class="fa-solid fa-bed"></i> 3 bd</span>
+                <span class="listing-spec"><i class="fa-solid fa-bath"></i> 2 ba</span>
+                <span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 1,640 sqft</span>
+              </div>
+            </div>
+          </a>
 
-          <a href="property-detail.html" class="card-listing"><div class="card-listing-img" style="background:linear-gradient(135deg,#d4b8d0 0%,#b080a8 100%);"><span class="card-listing-badge badge-new">Just Listed</span></div><div class="card-listing-body"><div class="listing-price">$550,000</div><div class="listing-address"><i class="fa-solid fa-location-dot"></i> 2740 Raven Creek Rd, Raleigh, NC 27615</div><div class="listing-specs"><span class="listing-spec"><i class="fa-solid fa-bed"></i> 4 bd</span><span class="listing-spec"><i class="fa-solid fa-bath"></i> 3.5 ba</span><span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 2,600 sqft</span></div></div></a>
+          <!-- Listing 6 -->
+          <a href="property-detail.html" class="card-listing">
+            <div class="card-listing-img" style="background:linear-gradient(135deg,#d4b8d0 0%,#b080a8 100%);">
+              <span class="card-listing-badge badge-new">Just Listed</span>
+              <button class="btn-fav" data-listing-id="srch-006" title="Save to favorites"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="card-listing-body">
+              <div class="listing-price">$550,000</div>
+              <div class="listing-address"><i class="fa-solid fa-location-dot"></i> 2740 Raven Creek Rd, Raleigh, NC 27615</div>
+              <div class="listing-specs">
+                <span class="listing-spec"><i class="fa-solid fa-bed"></i> 4 bd</span>
+                <span class="listing-spec"><i class="fa-solid fa-bath"></i> 3.5 ba</span>
+                <span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 2,600 sqft</span>
+              </div>
+            </div>
+          </a>
         </div>
 
         <div style="text-align:center;margin-top:40px;display:flex;align-items:center;justify-content:center;gap:8px;">
@@ -154,16 +271,57 @@
           <span style="color:var(--gray-400);">…</span>
           <button class="btn btn-outline" style="padding:10px 20px;font-size:13px;">Next <i class="fa-solid fa-arrow-right"></i></button>
         </div>
+
+        <!-- Save Search CTA (bottom of results) -->
+        <div style="margin-top:36px;padding:24px;background:var(--off-white);border-radius:var(--r);border:1px solid var(--gray-200);text-align:center;">
+          <i class="fa-solid fa-bell" style="color:var(--gold);font-size:24px;margin-bottom:10px;display:block;"></i>
+          <p style="font-weight:700;color:var(--navy);margin-bottom:6px;">Don't miss a match</p>
+          <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px;">Save this search and we'll email you the moment a new listing fits your criteria.</p>
+          <button class="btn btn-navy save-search-btn"><i class="fa-solid fa-bookmark"></i> Save This Search &amp; Get Alerts</button>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- SAVE SEARCH MODAL -->
+<div class="modal-overlay" id="save-search-modal" role="dialog" aria-modal="true" aria-labelledby="save-search-title">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <div style="margin-bottom:20px;">
+      <i class="fa-solid fa-bookmark" style="color:var(--gold);font-size:28px;display:block;margin-bottom:10px;"></i>
+      <h3 id="save-search-title" style="margin:0 0 6px;color:var(--navy);">Save This Search</h3>
+      <p style="font-size:14px;color:var(--gray-500);margin:0;">Enter your email and we'll send you new matches the moment they hit the market.</p>
+    </div>
+    <form id="save-search-form">
+      <input type="hidden" name="lead_type" value="saved_search" />
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" name="name" class="form-input" placeholder="First name" required />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" name="email" class="form-input" placeholder="you@email.com" required />
+      </div>
+      <div class="form-group">
+        <label class="form-label">How often would you like alerts?</label>
+        <select name="frequency" class="form-input" style="height:auto;padding:10px 12px;">
+          <option value="instant">Instant — as soon as they list</option>
+          <option value="daily">Daily digest</option>
+          <option value="weekly">Weekly roundup</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary w-full" style="justify-content:center;"><i class="fa-solid fa-bell"></i> Save &amp; Get Alerts</button>
+      <p style="font-size:11px;color:var(--gray-400);text-align:center;margin-top:10px;">Unsubscribe anytime. No spam.</p>
+    </form>
+  </div>
+</div>
+
 <footer class="site-footer">
   <div class="footer-main"><div class="container"><div class="footer-grid">
     <div class="footer-brand footer-col"><span class="footer-logo-main">Butch Dyer</span><span class="footer-logo-sub" id="brokerage-affiliation">Keller Williams Realty</span><p class="footer-tagline">Raleigh's trusted real estate expert for over 40 years.</p><div class="footer-social"><a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a><a href="#" class="footer-social-btn"><i class="fa-brands fa-youtube"></i></a></div></div>
     <div class="footer-col"><div class="footer-col-title">Navigate</div><ul><li><a href="search.html">Search Homes</a></li><li><a href="relocation-guide.html">Relocation Guide</a></li><li><a href="new-construction.html">New Construction</a></li><li><a href="about.html">About Butch</a></li><li><a href="blog.html">Blog</a></li></ul></div>
-    <div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="home-valuation.html">Home Valuation</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
+    <div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="resources.html">Free Guides</a></li><li><a href="home-valuation.html">Home Valuation</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
     <div class="footer-col"><div class="footer-col-title">Contact</div><div class="footer-contact-item"><strong>Phone</strong><a href="tel:9194270069">919-427-0069</a></div><div class="footer-contact-item"><strong>Email</strong><a href="mailto:butch@butchdyer.com">butch@butchdyer.com</a></div></div>
   </div></div></div>
   <div class="footer-bottom"><div class="container"><div class="footer-bottom-inner"><div class="footer-compliance"><div id="brokerage-badge" class="footer-badge-box">KW Keller Williams</div><div class="footer-eho">EHO</div><div class="footer-legal-text">Licensed in NC &nbsp;·&nbsp; NCREC #XXXXXX</div></div><div class="footer-copyright">&copy; 2025 Butch Dyer. All rights reserved.</div></div></div></div>
