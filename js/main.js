@@ -102,4 +102,137 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
+  // ── Favorites (localStorage) ─────────────────────────
+  function initFavorites() {
+    const stored = JSON.parse(localStorage.getItem('bd_favorites') || '[]');
+    document.querySelectorAll('.btn-fav').forEach(btn => {
+      const id = btn.dataset.listingId;
+      if (id && stored.includes(id)) {
+        btn.classList.add('active');
+        const icon = btn.querySelector('i');
+        if (icon) icon.className = 'fa-solid fa-heart';
+      }
+      btn.addEventListener('click', e => {
+        e.preventDefault(); e.stopPropagation();
+        const favs = JSON.parse(localStorage.getItem('bd_favorites') || '[]');
+        const isActive = btn.classList.contains('active');
+        const icon = btn.querySelector('i');
+        if (isActive) {
+          btn.classList.remove('active');
+          if (icon) icon.className = 'fa-regular fa-heart';
+          const idx = favs.indexOf(id);
+          if (idx > -1) favs.splice(idx, 1);
+        } else {
+          btn.classList.add('active');
+          if (icon) icon.className = 'fa-solid fa-heart';
+          if (id && !favs.includes(id)) favs.push(id);
+        }
+        localStorage.setItem('bd_favorites', JSON.stringify(favs));
+        updateFavBadge();
+      });
+    });
+    updateFavBadge();
+  }
+
+  function updateFavBadge() {
+    const count = JSON.parse(localStorage.getItem('bd_favorites') || '[]').length;
+    document.querySelectorAll('.fav-badge-count').forEach(el => {
+      el.textContent = count;
+      el.style.display = count > 0 ? 'inline-flex' : 'none';
+    });
+  }
+
+  // ── Save search (localStorage + email alert) ─────────
+  function initSaveSearch() {
+    const modal = document.getElementById('save-search-modal');
+    if (!modal) return;
+    document.querySelectorAll('.save-search-btn').forEach(btn => {
+      btn.addEventListener('click', () => modal.classList.add('open'));
+    });
+    modal.querySelector('.modal-close')?.addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+    const form = document.getElementById('save-search-form');
+    if (form) {
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const emailVal = form.querySelector('[name=email]')?.value || '';
+        const labelEl  = document.querySelector('.results-count strong');
+        const label    = labelEl ? labelEl.textContent + ' — Raleigh area' : 'Raleigh, NC search';
+        const saved    = JSON.parse(localStorage.getItem('bd_saved_searches') || '[]');
+        saved.unshift({ email: emailVal, label, date: new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) });
+        localStorage.setItem('bd_saved_searches', JSON.stringify(saved));
+        const box = form.parentElement;
+        box.innerHTML = `<div style="text-align:center;padding:12px 0;"><i class="fa-solid fa-circle-check" style="color:var(--gold);font-size:32px;display:block;margin-bottom:10px;"></i><p style="font-weight:700;color:var(--navy);margin-bottom:4px;">Search Saved!</p><p style="font-size:13px;color:var(--gray-500);margin:0;">New matches will be sent to ${emailVal}</p></div>`;
+        setTimeout(() => modal.classList.remove('open'), 2800);
+        renderSavedSearches();
+      });
+    }
+    renderSavedSearches();
+  }
+
+  function renderSavedSearches() {
+    const panel = document.getElementById('saved-searches-panel');
+    if (!panel) return;
+    const saved = JSON.parse(localStorage.getItem('bd_saved_searches') || '[]');
+    if (!saved.length) { panel.style.display = 'none'; return; }
+    panel.style.display = 'block';
+    const list = panel.querySelector('.saved-list');
+    if (!list) return;
+    list.innerHTML = saved.map((s, i) => `
+      <div class="saved-search-item">
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--navy);">${s.label}</div>
+          <div style="font-size:11px;color:var(--gray-400);">Saved ${s.date} · alerts → ${s.email}</div>
+        </div>
+        <button class="saved-search-remove" data-i="${i}" title="Remove"><i class="fa-solid fa-xmark"></i></button>
+      </div>`).join('');
+    list.querySelectorAll('.saved-search-remove').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const s2 = JSON.parse(localStorage.getItem('bd_saved_searches') || '[]');
+        s2.splice(parseInt(btn.dataset.i), 1);
+        localStorage.setItem('bd_saved_searches', JSON.stringify(s2));
+        renderSavedSearches();
+      });
+    });
+  }
+
+  // ── Lead magnet forms ────────────────────────────────
+  function initLeadMagnets() {
+    document.querySelectorAll('.lead-magnet-form').forEach(form => {
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const card    = form.closest('.lead-magnet-card');
+        const confirm = card?.querySelector('.lead-magnet-confirm');
+        const btn     = form.querySelector('[type=submit]');
+        if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+        setTimeout(() => {
+          if (confirm) { form.style.display = 'none'; confirm.style.display = 'block'; }
+        }, 700);
+      });
+    });
+  }
+
+  // ── Modal utility (data-modal trigger) ───────────────
+  function initModals() {
+    document.querySelectorAll('[data-modal]').forEach(trigger => {
+      trigger.addEventListener('click', e => {
+        e.preventDefault();
+        const modal = document.getElementById(trigger.dataset.modal);
+        if (modal) modal.classList.add('open');
+      });
+    });
+    document.querySelectorAll('.modal-overlay').forEach(modal => {
+      modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+      modal.querySelector('.modal-close')?.addEventListener('click', () => modal.classList.remove('open'));
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+    });
+  }
+
+  initFavorites();
+  initSaveSearch();
+  initLeadMagnets();
+  initModals();
+
 });
