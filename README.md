@@ -1,6 +1,6 @@
-# Dyer Realty NC — Website
+# Butch Dyer | Real Estate Website
 
-A complete static real estate website for **Butch Dyer**, REALTOR® at Keller Williams Realty, Raleigh NC.
+A complete static real estate website for **Butch Dyer**, REALTOR® — personal-name brand, brokerage-agnostic architecture.
 
 **Live Site:** https://dyer-realty-nc.vercel.app  
 **GitHub Repo:** https://github.com/Sadbinwalid/dire
@@ -45,6 +45,7 @@ dyer-realty-nc/
 ├── css/
 │   └── styles.css       # Complete design system (tokens, components, layout)
 ├── js/
+│   ├── config.js        # Single source of truth — agent name, brokerage, contact info
 │   └── main.js          # Mobile nav, mortgage calc, form confirmations
 ├── index.html
 ├── search.html
@@ -106,14 +107,30 @@ Then open a Pull Request from `develop` → `main` on GitHub.
 
 ## To-Do Before Going Live
 
-- [ ] Replace `NCREC #XXXXXX` with Butch's real license number
+- [ ] Replace `NCREC #XXXXXX` with Butch's real license number in `js/config.js` + HTML files
 - [ ] Add real headshot photo
 - [ ] Connect IDX feed (iHomeFinder, Showcase IDX, etc.)
 - [ ] Wire contact/valuation forms to CRM or Formspree
-- [ ] Point `dyerrealtync.com` domain DNS to Vercel
+- [ ] Point `ButchDyer.com` domain DNS to Vercel
+- [ ] ⚠️ Activate `butch@butchdyer.com` email (currently a placeholder — see `SITE_CONFIG.CONTACT.email` in `js/config.js`)
 - [ ] Replace gradient placeholders with real photography
 - [ ] Add Google Analytics / Meta Pixel
+- [ ] Update Instagram handle `@butchdyer` once confirmed
 - [ ] Set up Google Business Profile link in footer
+
+## Brokerage Swap Instructions
+
+If Butch changes brokerages, open `js/config.js` and update only the `BROKERAGE` block:
+```js
+BROKERAGE: {
+  name:      "New Brokerage Name",
+  shortName: "Short / Display Name",
+  badge:     "Badge Text",
+  address:   "123 Office Address, City, NC XXXXX",
+},
+```
+All elements with `id="brokerage-*"` across every page update automatically.
+The NCREC and EHO compliance lines are separate and unaffected.
 
 ---
 
@@ -122,5 +139,5 @@ Then open a Pull Request from `develop` → `main` on GitHub.
 **Butch Dyer** — REALTOR®  
 Keller Williams Realty · Raleigh, NC  
 📞 919-427-0069  
-✉️ butch@dyerrealtync.com  
+✉️ butch@butchdyer.com *(⚠️ placeholder — pending ButchDyer.com activation)*  
 🔑 NCREC License #XXXXXX
