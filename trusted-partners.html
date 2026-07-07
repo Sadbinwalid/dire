@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trusted Partners | Butch Dyer — Raleigh, NC</title>
+  <meta name="description" content="Butch Dyer's personal recommendations for Raleigh-area mortgage lenders, home inspectors, and other real estate professionals. Not paid advertising — people Butch actually trusts." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── Trusted Partners — page-scoped styles ── */
+    .tp-intro-bar { background: var(--gold-pale); border: 1px solid rgba(201,150,59,.25); border-radius: var(--r); padding: 22px 28px; display: flex; align-items: flex-start; gap: 18px; margin-bottom: 48px; }
+    .tp-intro-icon { font-size: 22px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .tp-intro-text { font-size: 15px; color: var(--gray-700); line-height: 1.75; margin: 0; }
+    .tp-intro-text strong { color: var(--navy); }
+    /* Category section */
+    .tp-category { margin-bottom: 72px; }
+    .tp-category:last-of-type { margin-bottom: 0; }
+    .tp-cat-header { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+    .tp-cat-icon { width: 52px; height: 52px; background: var(--navy); border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 22px; flex-shrink: 0; }
+    .tp-cat-title { font-size: 26px; font-weight: 700; color: var(--navy); font-family: var(--font-head); margin: 0; }
+    .tp-cat-intro { font-size: 15px; color: var(--gray-600); line-height: 1.75; max-width: 700px; margin: 0 0 28px; }
+    /* Partner card grid */
+    .tp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    /* Partner card */
+    .tp-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--r); padding: 28px; display: flex; flex-direction: column; gap: 0; transition: box-shadow .2s; }
+    .tp-card:hover { box-shadow: var(--shadow-md); }
+    .tp-card-logo { width: 64px; height: 64px; background: var(--off-white); border: 1px solid var(--gray-200); border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; font-size: 26px; color: var(--gray-400); margin-bottom: 18px; flex-shrink: 0; }
+    .tp-card-company { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+    .tp-card-person { font-size: 13px; color: var(--gray-500); margin-bottom: 14px; }
+    .tp-card-blurb { font-size: 14px; color: var(--gray-600); line-height: 1.75; flex: 1; margin-bottom: 20px; }
+    .tp-card-contact { display: flex; flex-direction: column; gap: 5px; margin-bottom: 18px; }
+    .tp-card-contact a { font-size: 13px; color: var(--gray-600); display: flex; align-items: center; gap: 7px; text-decoration: none; }
+    .tp-card-contact a:hover { color: var(--navy); }
+    .tp-card-contact i { color: var(--gold); width: 14px; flex-shrink: 0; }
+    .tp-card-link { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--navy); text-decoration: none; border: 1.5px solid var(--navy); border-radius: var(--r-full); padding: 8px 16px; transition: all .18s; margin-top: auto; width: fit-content; }
+    .tp-card-link:hover { background: var(--navy); color: var(--white); }
+    /* Placeholder badge */
+    .tp-placeholder-badge { display: inline-block; background: rgba(201,150,59,.15); border: 1px solid rgba(201,150,59,.3); color: #8a6000; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; border-radius: 3px; padding: 2px 8px; margin-bottom: 10px; }
+    /* "Add your partner" helper note */
+    .tp-dev-note { background: #fffbeb; border: 1.5px dashed #f59e0b; border-radius: var(--r); padding: 18px 24px; margin-bottom: 56px; }
+    .tp-dev-note p { font-size: 13px; color: #7c5e00; margin: 0; line-height: 1.7; }
+    .tp-dev-note code { background: rgba(201,150,59,.15); padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 12px; }
+    /* Responsive */
+    @media (max-width: 1024px) { .tp-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 600px)  { .tp-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 480px)  { .tp-intro-bar { flex-direction: column; gap: 12px; } }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container flex-between">
+    <a href="index.html" class="header-logo">
+      <span class="header-logo-main">Butch Dyer</span>
+      <span class="header-logo-sub">REALTOR® · KW Raleigh</span>
+    </a>
+    <nav><ul class="header-nav">
+      <li><a href="search.html">Search</a></li>
+      <li><a href="relocation-guide.html">Relocation</a></li>
+      <li><a href="new-construction.html">New Construction</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></nav>
+    <div class="header-actions">
+      <a href="tel:9194270069" class="header-phone"><i class="fa-solid fa-phone"></i> 919-427-0069</a>
+      <a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a>
+    </div>
+    <button class="mobile-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mobile-nav">
+  <a href="search.html"><i class="fa-solid fa-search fa-fw"></i> Search Homes</a>
+  <a href="relocation-guide.html"><i class="fa-solid fa-map fa-fw"></i> Relocation Guide</a>
+  <a href="new-construction.html"><i class="fa-solid fa-building fa-fw"></i> New Construction</a>
+  <a href="content-hub.html"><i class="fa-solid fa-play-circle fa-fw"></i> Local Guides</a>
+  <a href="about.html"><i class="fa-solid fa-user fa-fw"></i> About Butch</a>
+  <a href="blog.html"><i class="fa-solid fa-pen fa-fw"></i> Blog</a>
+  <a href="home-valuation.html"><i class="fa-solid fa-dollar-sign fa-fw"></i> Home Valuation</a>
+  <a href="mortgage-calculator.html"><i class="fa-solid fa-calculator fa-fw"></i> Mortgage Calculator</a>
+  <a href="resources.html"><i class="fa-solid fa-file-pdf fa-fw"></i> Free Guides</a>
+  <a href="trusted-partners.html" class="active"><i class="fa-solid fa-handshake fa-fw"></i> Trusted Partners</a>
+  <a href="contact.html"><i class="fa-solid fa-envelope fa-fw"></i> Contact</a>
+  <div class="mobile-cta"><a href="tel:9194270069" class="btn btn-primary w-full" style="justify-content:center;"><i class="fa-solid fa-phone"></i> Call 919-427-0069</a></div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Personal Recommendations &nbsp;·&nbsp; Not Paid Advertising</span>
+    <h1>People I Trust</h1>
+    <p>When you buy or sell a home, you need more than a REALTOR® — you need a whole team that performs. These are the professionals I personally refer my clients to because I've seen their work firsthand.</p>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<section class="section">
+  <div class="container">
+
+    <!-- Developer note: how to add/edit partners -->
+    <div class="tp-dev-note">
+      <p><strong>⚠️ For Butch / Site Editor:</strong> All partner info lives in the <code>PARTNERS</code> array at the top of the inline <code>&lt;script&gt;</code> tag on this page. To add a partner, copy an existing object and fill in the fields. To remove one, delete its object. No layout code needs to change — the page builds itself from the data. Fields marked <code>optional</code> can be left as empty strings <code>""</code>.</p>
+    </div>
+
+    <!-- Framing bar -->
+    <div class="tp-intro-bar">
+      <i class="fa-solid fa-circle-check tp-intro-icon"></i>
+      <p class="tp-intro-text">
+        <strong>These are my personal recommendations — not paid listings or sponsored placements.</strong> I've worked alongside each of these professionals and I trust them with my own clients. If you want a personal introduction, just give me a call. I'm happy to make the connection.
+      </p>
+    </div>
+
+    <!-- Partner categories rendered by JS -->
+    <div id="tp-categories-container"></div>
+
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section-final-cta">
+  <div class="container">
+    <div class="final-cta-inner">
+      <span class="eyebrow" style="color:var(--gold);">Want a Personal Introduction?</span>
+      <h2>Butch Will Make the Connection</h2>
+      <p>All of these professionals pick up the phone when I call. Give me a ring and I'll introduce you directly — no cold calls, no forms to fill out.</p>
+      <div class="final-cta-btns">
+        <a href="tel:9194270069" class="btn btn-primary btn-xl"><i class="fa-solid fa-phone"></i> Call 919-427-0069</a>
+        <a href="contact.html" class="btn btn-outline-white btn-xl"><i class="fa-solid fa-envelope"></i> Send a Message</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand footer-col">
+          <span class="footer-logo-main">Butch Dyer</span>
+          <span class="footer-logo-sub" id="brokerage-affiliation">Keller Williams Realty</span>
+          <p class="footer-tagline">Raleigh's trusted real estate expert for over 40 years. From first-time buyers to seasoned relocators — I'll help you find your place in the Triangle.</p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="footer-social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="footer-social-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="footer-social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Navigate</div>
+          <ul>
+            <li><a href="search.html">Search Homes</a></li>
+            <li><a href="relocation-guide.html">Relocation Guide</a></li>
+            <li><a href="new-construction.html">New Construction</a></li>
+            <li><a href="content-hub.html">Local Guides</a></li>
+            <li><a href="about.html">About Butch</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Resources</div>
+          <ul>
+            <li><a href="resources.html">Free Guides (PDF)</a></li>
+            <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
+            <li><a href="trusted-partners.html">Trusted Partners</a></li>
+            <li><a href="home-valuation.html">Home Valuation</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-contact-item"><strong>Phone</strong><a href="tel:9194270069">919-427-0069</a></div>
+          <div class="footer-contact-item"><strong>Email</strong><a href="mailto:butch@butchdyer.com">butch@butchdyer.com</a></div>
+          <div class="footer-contact-item" id="brokerage-office"><strong>Office</strong>Keller Williams Realty<br>4242 Six Forks Rd, Ste 1500<br>Raleigh, NC 27609</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <div class="footer-compliance">
+          <div id="brokerage-badge" class="footer-badge-box">KW Keller Williams</div>
+          <div class="footer-eho" title="Equal Housing Opportunity">EHO</div>
+          <div class="footer-legal-text">Licensed in North Carolina &nbsp;·&nbsp; NCREC License #XXXXXX</div>
+          <div class="footer-legal-text">Working with Real Estate Agents Disclosure available upon request.</div>
+        </div>
+        <div class="footer-copyright">&copy; 2025 Butch Dyer. All rights reserved.</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script>
+/* ============================================================
+   TRUSTED PARTNERS DATA + RENDERER
+   ─────────────────────────────────────────────────────────────
+   TO ADD A PARTNER: copy an existing object in PARTNERS[] and
+   fill in the fields. Set "placeholder: true" while info is
+   pending — it shows the ⚠️ badge automatically.
+
+   TO ADD A CATEGORY: add an entry to CATEGORIES[], then add
+   partner objects in PARTNERS[] with a matching "category" key.
+
+   TO REMOVE: delete the object. No layout code changes needed.
+   ============================================================ */
+
+var CATEGORIES = [
+  {
+    id:    'lenders',
+    label: 'Mortgage Lenders',
+    icon:  'fa-solid fa-building-columns',
+    intro: 'Getting pre-approved is step one. These lenders communicate clearly, move fast when the market is competitive, and don\'t surprise my clients at closing. I refer them because I\'ve watched them perform — not because of any business arrangement.'
+  },
+  {
+    id:    'inspectors',
+    label: 'Home Inspectors',
+    icon:  'fa-solid fa-magnifying-glass-chart',
+    intro: 'A good inspector finds everything — the things you need to know before you commit. These inspectors are thorough, write readable reports, and will walk you through the house after the inspection so nothing is a mystery.'
+  }
+  /* ── Future categories — uncomment and fill in to activate ──
+  ,{
+    id:    'movers',
+    label: 'Moving Companies',
+    icon:  'fa-solid fa-truck-moving',
+    intro: '⚠️ Placeholder intro — Butch to provide text'
+  },
+  {
+    id:    'insurance',
+    label: 'Home Insurance',
+    icon:  'fa-solid fa-shield-halved',
+    intro: '⚠️ Placeholder intro — Butch to provide text'
+  }
+  */
+];
+
+var PARTNERS = [
+  /* ── MORTGAGE LENDERS ────────────────────────────────────── */
+  {
+    category:    'lenders',
+    company:     '⚠️ Lender Company Name',
+    person:      '⚠️ Contact Name · Title',
+    blurb:       '⚠️ Placeholder — Butch to provide 2–3 sentences describing why he recommends this lender. What makes them stand out? How do they treat clients?',
+    phone:       '',          /* optional: '919-555-0100' */
+    email:       '',          /* optional: 'name@company.com' */
+    url:         '#',         /* external link — use '' to hide the button */
+    urlLabel:    'Visit Site',
+    icon:        'fa-solid fa-building-columns',
+    placeholder: true
+  },
+  {
+    category:    'lenders',
+    company:     '⚠️ Lender Company Name',
+    person:      '⚠️ Contact Name · Title',
+    blurb:       '⚠️ Placeholder — Butch to provide 2–3 sentences describing why he recommends this lender.',
+    phone:       '',
+    email:       '',
+    url:         '#',
+    urlLabel:    'Visit Site',
+    icon:        'fa-solid fa-building-columns',
+    placeholder: true
+  },
+  {
+    category:    'lenders',
+    company:     '⚠️ Lender Company Name',
+    person:      '⚠️ Contact Name · Title',
+    blurb:       '⚠️ Placeholder — Butch to provide 2–3 sentences describing why he recommends this lender.',
+    phone:       '',
+    email:       '',
+    url:         '#',
+    urlLabel:    'Visit Site',
+    icon:        'fa-solid fa-building-columns',
+    placeholder: true
+  },
+
+  /* ── HOME INSPECTORS ─────────────────────────────────────── */
+  {
+    category:    'inspectors',
+    company:     '⚠️ Inspection Company Name',
+    person:      '⚠️ Inspector Name · Certified Home Inspector',
+    blurb:       '⚠️ Placeholder — Butch to provide 2–3 sentences describing this inspector. What do they find that others miss? How do they communicate findings?',
+    phone:       '',
+    email:       '',
+    url:         '#',
+    urlLabel:    'Visit Site',
+    icon:        'fa-solid fa-magnifying-glass-chart',
+    placeholder: true
+  },
+  {
+    category:    'inspectors',
+    company:     '⚠️ Inspection Company Name',
+    person:      '⚠️ Inspector Name · Certified Home Inspector',
+    blurb:       '⚠️ Placeholder — Butch to provide 2–3 sentences describing this inspector.',
+    phone:       '',
+    email:       '',
+    url:         '#',
+    urlLabel:    'Visit Site',
+    icon:        'fa-solid fa-magnifying-glass-chart',
+    placeholder: true
+  }
+
+  /* ── FUTURE: MOVERS (uncomment to activate) ──────────────────
+  ,{
+    category:    'movers',
+    company:     '⚠️ Moving Company Name',
+    person:      '',
+    blurb:       '⚠️ Placeholder',
+    phone:       '',
+    email:       '',
+    url:         '#',
+    urlLabel:    'Get a Quote',
+    icon:        'fa-solid fa-truck-moving',
+    placeholder: true
+  }
+  */
+];
+
+/* ── Renderer (no edits needed below this line) ── */
+document.addEventListener('DOMContentLoaded', function () {
+  var container = document.getElementById('tp-categories-container');
+  if (!container) return;
+
+  CATEGORIES.forEach(function (cat) {
+    var catPartners = PARTNERS.filter(function (p) { return p.category === cat.id; });
+    if (!catPartners.length) return;
+
+    var section = document.createElement('div');
+    section.className = 'tp-category';
+
+    var header = document.createElement('div');
+    header.className = 'tp-cat-header';
+    header.innerHTML =
+      '<div class="tp-cat-icon"><i class="' + cat.icon + '"></i></div>' +
+      '<h2 class="tp-cat-title">' + cat.label + '</h2>';
+
+    var intro = document.createElement('p');
+    intro.className = 'tp-cat-intro';
+    intro.textContent = cat.intro;
+
+    var grid = document.createElement('div');
+    grid.className = 'tp-grid';
+
+    catPartners.forEach(function (p) {
+      var card = document.createElement('div');
+      card.className = 'tp-card';
+
+      var placeholderBadge = p.placeholder
+        ? '<span class="tp-placeholder-badge">⚠️ Info Pending</span><br>'
+        : '';
+
+      var contactHTML = '';
+      if (p.phone) {
+        contactHTML += '<a href="tel:' + p.phone.replace(/[^0-9]/g, '') + '"><i class="fa-solid fa-phone"></i>' + p.phone + '</a>';
+      }
+      if (p.email) {
+        contactHTML += '<a href="mailto:' + p.email + '"><i class="fa-solid fa-envelope"></i>' + p.email + '</a>';
+      }
+
+      var linkHTML = (p.url && p.url !== '')
+        ? '<a href="' + p.url + '" class="tp-card-link" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i>' + p.urlLabel + '</a>'
+        : '';
+
+      card.innerHTML =
+        '<div class="tp-card-logo"><i class="' + p.icon + '"></i></div>' +
+        placeholderBadge +
+        '<div class="tp-card-company">' + p.company + '</div>' +
+        (p.person ? '<div class="tp-card-person">' + p.person + '</div>' : '') +
+        '<p class="tp-card-blurb">' + p.blurb + '</p>' +
+        (contactHTML ? '<div class="tp-card-contact">' + contactHTML + '</div>' : '') +
+        linkHTML;
+
+      grid.appendChild(card);
+    });
+
+    section.appendChild(header);
+    section.appendChild(intro);
+    section.appendChild(grid);
+    container.appendChild(section);
+  });
+});
+</script>
+</body>
+</html>
