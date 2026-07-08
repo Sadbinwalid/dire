@@ -170,6 +170,9 @@
   <div class="container">
     <div class="grid-2" style="align-items:center;gap:64px;">
       <div class="about-photo-wrap">
+        <!-- ⚠️ HEADSHOT PENDING — client to provide photo file directly.
+             Reference: @butchdyer79 on Instagram. Do NOT pull images from Instagram automatically.
+             Replace the icon below with an <img> tag once files are received. -->
         <div class="about-circle">
           <i class="fa-solid fa-user" style="font-size:64px;opacity:.3;"></i>
           <div class="about-kw-badge" id="brokerage-photo-badge">KW Raleigh</div>
@@ -179,16 +182,18 @@
         <span class="eyebrow">Your Guide to the Triangle</span>
         <div class="about-name">Butch Dyer</div>
         <div class="about-title-line">REALTOR® &nbsp;·&nbsp; Relocation &amp; New Construction Specialist</div>
-        <p class="about-bio">I've been helping families find their place in Raleigh since 1984 — through market booms, downturns, and everything in between. My specialty is connecting people to the right home, the right neighborhood, and the right future. I'm not just your agent; I'm your neighbor, your advisor, and your advocate from the first showing through closing day and beyond.</p>
-        <p class="about-bio">As an active HOA board member and a builder-trusted consultant for new communities across the Triangle, I bring access and insight that most agents simply can't offer.</p>
+        <p class="about-bio">Real estate is more than just a transaction; it's about having a seasoned strategist in your corner. I bring three decades of professional negotiation and sales experience to the table, combined with a lifetime of local North Carolina market knowledge. My background in new home construction sales gives my clients a distinct competitive edge, whether they are buying a brand-new build or navigating the traditional market. I pride myself on transparency, absolute client advocacy, and delivering a smooth, premium experience that takes the stress out of moving.</p>
+        <p class="about-bio">Elected HOA President at The Gardens at Flowers Plantation, and a builder-trusted consultant for new communities across the Triangle — I bring access and insight that most agents simply can't offer.</p>
         <div class="about-meta-row">
-          <span class="about-chip"><i class="fa-solid fa-certificate"></i> NCREC #XXXXXX</span>
+          <span class="about-chip"><i class="fa-solid fa-certificate"></i> NCREC #323418</span>
+          <!-- ⚠️ Experience claims pending client clarification — do not edit without confirmation -->
           <span class="about-chip"><i class="fa-solid fa-clock"></i> 40+ Years Active</span>
-          <span class="about-chip"><i class="fa-solid fa-home"></i> HOA Leader</span>
+          <span class="about-chip"><i class="fa-solid fa-trophy"></i> HOA President</span>
         </div>
-        <div class="cert-row">
-          <span class="cert-badge">CRS</span><span class="cert-badge">ABR</span>
-          <span class="cert-badge">GRI</span><span class="cert-badge">e-PRO</span><span class="cert-badge">SRES</span>
+        <!-- Awards & Recognition — unconfirmed NAR designations (CRS/ABR/GRI/e-PRO/SRES) removed per client review -->
+        <div style="font-size:13px;color:var(--gray-600);margin-bottom:20px;line-height:1.7;">
+          <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-500);display:block;margin-bottom:4px;">Awards &amp; Recognition</span>
+          Multiple Builder Sales Awards &nbsp;·&nbsp; M.A.M.E. Award — $12M+ in 3 Months
         </div>
         <a href="about.html" class="btn btn-outline">Read More About Butch <i class="fa-solid fa-arrow-right"></i></a>
       </div>
@@ -239,6 +244,7 @@
       </div>
       <a href="search.html" class="btn btn-outline">View All Listings <i class="fa-solid fa-arrow-right"></i></a>
     </div>
+    <!-- ⚠️ PLACEHOLDER MLS LISTINGS — replace with live IDX/MLS data when available -->
     <div class="grid-3">
       <a href="property-detail.html" class="card-listing">
         <div class="card-listing-img">
@@ -252,21 +258,6 @@
             <span class="listing-spec"><i class="fa-solid fa-bed"></i> 4 bd</span>
             <span class="listing-spec"><i class="fa-solid fa-bath"></i> 3 ba</span>
             <span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 2,840 sqft</span>
-          </div>
-        </div>
-      </a>
-      <a href="community.html" class="card-listing">
-        <div class="card-listing-img" style="background:linear-gradient(135deg,#b8d4c8 0%,#7ab0a0 100%);">
-          <span class="card-listing-badge badge-nc">New Construction</span>
-          <button class="btn-fav" data-listing-id="listing-002" title="Save to favorites"><i class="fa-regular fa-heart"></i></button>
-        </div>
-        <div class="card-listing-body">
-          <div class="listing-price">From $485,000</div>
-          <div class="listing-address"><i class="fa-solid fa-location-dot"></i> The Reserve at Stonecroft, Wake Forest, NC</div>
-          <div class="listing-specs">
-            <span class="listing-spec"><i class="fa-solid fa-bed"></i> 3–5 bd</span>
-            <span class="listing-spec"><i class="fa-solid fa-bath"></i> 2–4 ba</span>
-            <span class="listing-spec"><i class="fa-solid fa-ruler-combined"></i> 2,100–3,600 sqft</span>
           </div>
         </div>
       </a>
@@ -285,11 +276,46 @@
           </div>
         </div>
       </a>
+      <a href="search.html" class="card-listing" style="display:flex;align-items:center;justify-content:center;min-height:180px;border:2px dashed var(--gray-200);background:var(--gray-50);text-decoration:none;">
+        <div style="text-align:center;padding:24px;">
+          <i class="fa-solid fa-search" style="font-size:28px;color:var(--gray-300);margin-bottom:10px;display:block;"></i>
+          <div style="font-weight:700;color:var(--navy);font-size:15px;margin-bottom:4px;">Browse All Listings</div>
+          <div style="font-size:13px;color:var(--gray-500);">Search the full Triangle MLS →</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         FEATURED NEW CONSTRUCTION COMMUNITIES
+         ─────────────────────────────────────────────────────────────────
+         These are rendered from the NC_COMMUNITIES array defined in the
+         <script> block near the bottom of this file.
+
+         TO UPDATE: Edit the NC_COMMUNITIES array — no layout knowledge needed.
+         Pricing and specials change frequently; update as communities change.
+
+         ⚠️ FUTURE PHASE: A lightweight CMS or admin form is strongly recommended
+         so Butch can update community entries without requiring a developer.
+         ═══════════════════════════════════════════════════════════════════ -->
+    <div style="margin-top:48px;padding-top:36px;border-top:1px solid var(--gray-100);">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;flex-wrap:wrap;">
+        <div>
+          <span class="eyebrow" style="display:block;margin-bottom:4px;">Builder Communities</span>
+          <h3 style="margin:0;color:var(--navy);">Featured New Construction</h3>
+        </div>
+        <a href="new-construction.html" class="btn btn-outline btn-sm" style="margin-left:auto;">View All Communities <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div id="nc-communities-container" class="grid-3"></div>
     </div>
   </div>
 </section>
 
 <!-- 8. TESTIMONIALS -->
+<!-- TODO: Awaiting finalized testimonial snippets from client-provided Google reviews.
+     Client confirmed real reviews exist from Lawson Glen by D.R. Horton buyers.
+     "We can take snippets and in some cases create 2 from 1" — client note.
+     Structure below supports 3 short quote cards (~2 sentences each).
+     Replace placeholder quotes below when client provides final review text. -->
 <section class="section">
   <div class="container">
     <div class="section-header centered">
@@ -461,11 +487,12 @@
               <div style="font-size:12px;color:var(--gray-500);text-transform:uppercase;letter-spacing:.08em;margin-top:4px;">Priority: You</div>
             </div>
           </div>
-          <div class="cert-row" style="justify-content:center;margin-top:28px;">
-            <span class="cert-badge">CRS</span><span class="cert-badge">ABR</span>
-            <span class="cert-badge">GRI</span><span class="cert-badge">e-PRO</span><span class="cert-badge">SRES</span>
+          <!-- Awards & Recognition — unconfirmed NAR designations removed per client review -->
+          <div style="text-align:center;margin-top:24px;padding:14px 16px;background:var(--gold-pale);border-radius:var(--r);border:1px solid rgba(201,150,59,.2);">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-500);margin-bottom:5px;">Awards &amp; Recognition</div>
+            <div style="font-size:13px;color:var(--gray-700);line-height:1.6;">Multiple Builder Sales Awards &nbsp;·&nbsp; M.A.M.E. Award — $12M+ in 3 Months</div>
           </div>
-          <a href="contact.html" class="btn btn-primary w-full" style="justify-content:center;display:flex;margin-top:24px;"><i class="fa-solid fa-envelope"></i> Start the Conversation</a>
+          <a href="contact.html" class="btn btn-primary w-full" style="justify-content:center;display:flex;margin-top:20px;"><i class="fa-solid fa-envelope"></i> Start the Conversation</a>
         </div>
       </div>
     </div>
@@ -475,6 +502,11 @@
 <div class="divider"></div>
 
 <!-- 11. CONTENT HUB TEASER -->
+<!-- NOTE: Client intends to update this content (guides, neighborhood posts, videos)
+     regularly on a weekly/monthly basis. A lightweight CMS or admin interface is
+     recommended in a future phase so Butch can add/update content without
+     requiring direct code edits each time. Do NOT build this in the current pass —
+     flag for future implementation. -->
 <section class="section section-alt">
   <div class="container">
     <div class="section-header flex-between" style="flex-wrap:wrap;gap:16px;">
@@ -731,8 +763,12 @@
       <div class="footer-bottom-inner">
         <div class="footer-compliance">
           <div id="brokerage-badge" class="footer-badge-box">KW Keller Williams</div>
+          <!-- ⚠️ EHO ICON: Replace current text with the official Equal Housing Opportunity logo.
+               Download the exact file from: https://www.hud.gov/contactus/hudgraphics
+               Do NOT use a generic icon — the official HUD file is required.
+               Someone must download and provide the asset before swapping it in. -->
           <div class="footer-eho" title="Equal Housing Opportunity">EHO</div>
-          <div class="footer-legal-text">Licensed in North Carolina &nbsp;·&nbsp; NCREC License #XXXXXX</div>
+          <div class="footer-legal-text">Licensed in North Carolina &nbsp;·&nbsp; NCREC License #323418</div>
           <div class="footer-legal-text">Working with Real Estate Agents Disclosure available upon request.</div>
         </div>
         <div class="footer-copyright">&copy; 2025 Butch Dyer. All rights reserved.</div>
@@ -741,6 +777,69 @@
   </div>
 </footer>
 
+<!-- ═══════════════════════════════════════════════════════════════════
+     NEW CONSTRUCTION COMMUNITIES — EDITABLE DATA
+     ─────────────────────────────────────────────────────────────────
+     HOW TO UPDATE (no layout knowledge required):
+       Edit the NC_COMMUNITIES array below. Fields per entry:
+         name      — Community / subdivision name
+         builder   — Builder name (e.g. "D.R. Horton", "Lennar")
+         location  — "City, NC" string
+         priceFrom — Starting price string, e.g. "From $450,000"
+         blurb     — 1–2 sentences: highlights, current specials, key selling points
+         url       — Link to builder's community page (use "#" if not yet known)
+
+       Pricing and specials change weekly/monthly — update as needed.
+       To add a community: copy an existing {} block and fill it in.
+       To remove one: delete its {} block.
+
+     ⚠️ FUTURE PHASE: A lightweight CMS or admin form is strongly recommended
+     so Butch can update these entries himself without a developer each time.
+     Consider: Netlify CMS / Decap CMS, or a Google Sheets → JSON pipeline.
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+var NC_COMMUNITIES = [
+  {
+    name:      "⚠️ Community Name — Pending",
+    builder:   "⚠️ Builder Name",
+    location:  "⚠️ City, NC",
+    priceFrom: "From $XXX,000",
+    blurb:     "⚠️ Placeholder — Butch to provide community name, builder, location, starting price, and a 1–2 sentence description. Update whenever pricing or specials change.",
+    url:       "#"   // ← Replace with builder's community page URL
+  },
+  {
+    name:      "⚠️ Community Name — Pending",
+    builder:   "⚠️ Builder Name",
+    location:  "⚠️ City, NC",
+    priceFrom: "From $XXX,000",
+    blurb:     "⚠️ Placeholder — Butch to provide real community info.",
+    url:       "#"
+  }
+];
+
+document.addEventListener('DOMContentLoaded', function () {
+  var container = document.getElementById('nc-communities-container');
+  if (!container || !NC_COMMUNITIES.length) return;
+  NC_COMMUNITIES.forEach(function (c) {
+    var card = document.createElement('a');
+    card.href = c.url;
+    card.className = 'card-listing';
+    if (c.url && c.url !== '#') { card.target = '_blank'; card.rel = 'noopener noreferrer'; }
+    card.innerHTML =
+      '<div class="card-listing-img" style="background:linear-gradient(135deg,#b8d4c8 0%,#7ab0a0 100%);">'
+      + '<span class="card-listing-badge badge-nc">New Construction</span>'
+      + '</div>'
+      + '<div class="card-listing-body">'
+      + '<div class="listing-price">' + c.priceFrom + '</div>'
+      + '<div class="listing-address"><i class="fa-solid fa-location-dot"></i> ' + c.name + ' &nbsp;&middot;&nbsp; ' + c.location + '</div>'
+      + '<div class="listing-specs" style="display:block;"><span style="font-size:13px;color:var(--gray-600);line-height:1.6;">'
+      + c.builder + ' &nbsp;&middot;&nbsp; ' + c.blurb
+      + '</span></div>'
+      + '</div>';
+    container.appendChild(card);
+  });
+});
+</script>
 <script src="js/config.js"></script>
 <script src="js/main.js"></script>
 <script src="js/chat-bubble.js"></script>

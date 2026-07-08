@@ -15,7 +15,7 @@ const SITE_CONFIG = {
   AGENT: {
     name:    "Butch Dyer",
     title:   "REALTOR®",
-    license: "NCREC #XXXXXX",
+    license: "NCREC #323418",
   },
 
   // ─── SWAPPABLE ─────────────────────────────────────────────────────────────
@@ -36,12 +36,14 @@ const SITE_CONFIG = {
     email: "butch@butchdyer.com",
   },
 
-  // Legal DBA — used ONLY in fine-print / compliance text, not as visual brand.
-  DBA: "Dyer Realty NC",
+  // ⚠️ DBA filing ("Dyer Realty NC") is NOT yet complete — do NOT display in public
+  // compliance or footer text until the business name filing is confirmed complete.
+  // Use "Butch Dyer" as the personal brand name until then.
+  DBA: "Dyer Realty NC", // SUPPRESSED pending filing confirmation
 
   COMPLIANCE: {
     eho:        true,
-    ncrec:      "NCREC License #XXXXXX",
+    ncrec:      "NCREC License #323418",
     disclosure: "Working with Real Estate Agents Disclosure available upon request.",
   },
 };
