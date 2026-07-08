@@ -69,6 +69,19 @@
     /* Disclaimer box */
     .mc-disclaimer { background: var(--off-white); border: 1px solid var(--gray-200); border-radius: var(--r); padding: 22px 26px; margin-top: 40px; }
     .mc-disclaimer p { font-size: 13px; color: var(--gray-600); margin: 0; line-height: 1.75; }
+    /* Loan type selector */
+    .mc-loan-group { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+    .mc-loan-btn { padding: 12px 6px 10px; border: 2px solid var(--gray-200); border-radius: var(--r-sm); background: transparent; font-weight: 700; font-size: 14px; color: var(--gray-600); cursor: pointer; transition: all .18s; font-family: var(--font-body); text-align: center; line-height: 1.2; }
+    .mc-loan-btn span { display: block; font-size: 10px; font-weight: 600; color: var(--gray-400); text-transform: uppercase; letter-spacing: .06em; margin-top: 3px; }
+    .mc-loan-btn:hover { border-color: var(--navy); color: var(--navy); }
+    .mc-loan-btn.active { border-color: var(--gold); background: var(--gold-pale); color: var(--navy); }
+    .mc-loan-btn.active span { color: var(--gray-600); }
+    /* HOA bar + dot */
+    .mc-bar-hoa { background: rgba(255,255,255,.15); }
+    .mc-dot-hoa { background: rgba(255,255,255,.15); }
+    /* Remove per-bar border-radius — overflow:hidden on wrap handles rounding */
+    .mc-bar-pi  { border-radius: 0; }
+    .mc-bar-ins { border-radius: 0; }
     /* Responsive */
     @media (max-width: 1024px) {
       .mc-grid { grid-template-columns: 1fr; }
@@ -79,6 +92,7 @@
       .mc-result-panel { padding: 24px 18px; }
       .mc-result-total { font-size: 40px; }
       .mc-term-btn { font-size: 13px; }
+      .mc-loan-group { grid-template-columns: repeat(2,1fr); }
     }
   </style>
 </head>
@@ -132,7 +146,7 @@
   <div class="container">
     <span class="eyebrow">Free Tool &nbsp;·&nbsp; No Sign-Up Required</span>
     <h1>Mortgage Calculator</h1>
-    <p>Get a ballpark monthly payment in seconds — principal, interest, taxes, and insurance together. No email required, no strings attached.</p>
+    <p>Knowing what you can afford — <em>before</em> you start shopping — can save you a lot of heartache. Use this to find your range in seconds.</p>
   </div>
 </div>
 
@@ -141,8 +155,11 @@
   <div class="container">
 
     <div class="container-narrow" style="padding:0;margin-bottom:40px;">
-      <p class="lead" style="margin-bottom:12px;">Just want a rough idea of what you'd spend? Try the calculator below — no email or sign-up required. Every field updates your estimate instantly.</p>
-      <p style="color:var(--gray-500);font-size:14px;margin:0;">Rates shown are estimates only. Property tax and insurance defaults reflect typical Wake County, NC figures — adjust them for your situation. For actual rates and a personalized scenario, <a href="contact.html" style="color:var(--navy);font-weight:600;">talk to Butch</a> or a licensed lender.</p>
+      <div style="background:var(--gold-pale);border:1px solid rgba(201,150,59,.3);border-radius:var(--r);padding:16px 20px;margin-bottom:24px;display:flex;gap:12px;align-items:flex-start;">
+        <i class="fa-solid fa-circle-info" style="color:var(--gold);margin-top:3px;flex-shrink:0;"></i>
+        <p style="margin:0;font-size:14px;color:var(--gray-700);line-height:1.65;"><strong>I'm a REALTOR, not a mortgage broker.</strong> I don't give rate quotes or pre-approvals — that's a lender's job. This tool is here so you can get a realistic number in your head before you start looking. For actual rates and pre-approvals, I have a short list of lenders I personally trust on my <a href="trusted-partners.html" style="color:var(--navy);font-weight:600;">Trusted Partners</a> page.</p>
+      </div>
+      <p class="lead" style="margin-bottom:0;">Every field below updates your estimate instantly — no email, no sign-up, no strings.</p>
     </div>
 
     <div class="mc-grid">
@@ -160,7 +177,19 @@
           </div>
         </div>
 
-        <!-- Down Payment -->
+        <!-- Loan Type -->
+        <div class="mc-field">
+          <label class="mc-label">Loan Type</label>
+          <div class="mc-loan-group">
+            <button class="mc-loan-btn" data-type="fha" type="button">FHA<span>3.5% min</span></button>
+            <button class="mc-loan-btn active" data-type="conventional" type="button">Conventional<span>5% min</span></button>
+            <button class="mc-loan-btn" data-type="va" type="button">VA<span>$0 down</span></button>
+            <button class="mc-loan-btn" data-type="custom" type="button">Custom<span>your own</span></button>
+          </div>
+          <p class="mc-hint" id="mc-loan-type-hint">Conventional: 5% minimum down. Below 20% typically requires PMI (not included in this estimate).</p>
+        </div>
+
+        <!-- Down Payment (minimum set by loan type) -->
         <div class="mc-field">
           <label class="mc-label">
             Down Payment &nbsp;<span id="mc-dp-mode-label" style="font-weight:400;color:var(--gold);letter-spacing:0;text-transform:none;">% of price</span>
@@ -175,7 +204,16 @@
               <button class="mc-dp-toggle" data-mode="dollar" type="button">$</button>
             </div>
           </div>
-          <p class="mc-hint">Down payment below 20% typically requires PMI (not included in this estimate).</p>
+        </div>
+
+        <!-- Additional Down Payment -->
+        <div class="mc-field">
+          <label class="mc-label" for="mc-add-down">Additional Down Payment &nbsp;<span style="font-weight:400;color:var(--gold);letter-spacing:0;text-transform:none;">(optional)</span></label>
+          <div class="mc-affix-wrap has-prefix">
+            <span class="mc-prefix">$</span>
+            <input type="text" id="mc-add-down" class="form-input" inputmode="numeric" placeholder="0" autocomplete="off" />
+          </div>
+          <p class="mc-hint">Putting in extra cash on top of the minimum? Add it here. More down = lower monthly payment.</p>
         </div>
 
         <!-- Loan Term -->
@@ -195,7 +233,7 @@
             <input type="number" id="mc-rate" class="form-input" step="0.1" min="0" max="30" autocomplete="off" />
             <span class="mc-suffix">%</span>
           </div>
-          <p class="mc-hint">Rates shown are estimates — contact Butch for current rates from his trusted lenders.</p>
+          <p class="mc-hint">Adjust this to match quotes you've received. For current rates, talk to a licensed lender — see <a href="trusted-partners.html" style="color:var(--navy);">Trusted Partners</a>.</p>
         </div>
 
         <!-- Optional: taxes + insurance -->
@@ -222,19 +260,30 @@
           </div>
           <p class="mc-hint">Typical estimate for a $400K home in NC. Set to 0 to exclude from total.</p>
         </div>
+
+        <!-- HOA Dues -->
+        <div class="mc-field">
+          <label class="mc-label" for="mc-hoa">HOA Dues (Monthly)</label>
+          <div class="mc-affix-wrap has-prefix">
+            <span class="mc-prefix">$</span>
+            <input type="number" id="mc-hoa" class="form-input" step="10" min="0" placeholder="0" autocomplete="off" />
+          </div>
+          <p class="mc-hint">Very common in Triangle planned communities and new construction neighborhoods. Always ask upfront — HOA dues are a real part of your monthly cost. Set to 0 if none.</p>
+        </div>
       </div>
 
       <!-- ── RIGHT: RESULTS ── -->
       <div class="mc-result-panel">
-        <div class="mc-result-label">Estimated Monthly Payment</div>
+        <div class="mc-result-label">Estimated Monthly Total</div>
         <div class="mc-result-total" id="mc-out-total-hero">—</div>
-        <div class="mc-result-sub">per month (PITI estimate)</div>
+        <div class="mc-result-sub">P&amp;I + taxes + insurance + HOA (estimate)</div>
 
-        <!-- Proportion bar: gold = P&I, white50 = tax, white25 = insurance -->
+        <!-- Proportion bar: gold=P&I, white50=tax, white25=insurance, white15=HOA -->
         <div class="mc-bar-wrap">
-          <div class="mc-bar mc-bar-pi"  id="mc-bar-pi"  style="width:80%;"></div>
+          <div class="mc-bar mc-bar-pi"  id="mc-bar-pi"  style="width:75%;"></div>
           <div class="mc-bar mc-bar-tax" id="mc-bar-tax" style="width:15%;"></div>
-          <div class="mc-bar mc-bar-ins" id="mc-bar-ins" style="width:5%;"></div>
+          <div class="mc-bar mc-bar-ins" id="mc-bar-ins" style="width:7%;"></div>
+          <div class="mc-bar mc-bar-hoa" id="mc-bar-hoa" style="width:3%;"></div>
         </div>
 
         <!-- Breakdown -->
@@ -250,6 +299,10 @@
           <div class="mc-line" id="mc-row-ins">
             <span class="mc-line-key"><span class="mc-dot mc-dot-ins"></span>Home Insurance</span>
             <span class="mc-line-val" id="mc-out-ins">—</span>
+          </div>
+          <div class="mc-line" id="mc-row-hoa">
+            <span class="mc-line-key"><span class="mc-dot mc-dot-hoa"></span>HOA Dues</span>
+            <span class="mc-line-val" id="mc-out-hoa">—</span>
           </div>
           <div class="mc-line mc-line-total">
             <span class="mc-line-key">Total Monthly</span>
@@ -267,11 +320,11 @@
         </div>
 
         <!-- CTAs -->
-        <a href="contact.html" class="btn btn-primary w-full" style="justify-content:center;margin-bottom:10px;">
-          <i class="fa-solid fa-phone"></i> Want an Exact Number? Talk to Butch
+        <a href="trusted-partners.html" class="btn btn-primary w-full" style="justify-content:center;margin-bottom:10px;">
+          <i class="fa-solid fa-handshake"></i> Get Pre-Approved — Trusted Lenders
         </a>
-        <a href="trusted-partners.html" class="btn btn-outline-white w-full" style="justify-content:center;">
-          <i class="fa-solid fa-handshake"></i> Meet Butch's Trusted Lenders
+        <a href="contact.html" class="btn btn-outline-white w-full" style="justify-content:center;">
+          <i class="fa-solid fa-phone"></i> Call Butch — 919-427-0069
         </a>
 
         <p style="font-size:11px;color:rgba(255,255,255,.25);text-align:center;margin-top:16px;margin-bottom:0;">
@@ -282,7 +335,7 @@
 
     <!-- Disclaimer -->
     <div class="mc-disclaimer">
-      <p><strong style="color:var(--navy);"><i class="fa-solid fa-circle-info" style="color:var(--gold);margin-right:6px;"></i>Important Disclaimer</strong> — This calculator provides rough estimates for illustrative purposes only and does not constitute a loan offer or commitment. Actual payments may differ based on your credit score, loan type (conventional, FHA, VA, USDA), PMI if applicable, HOA fees, flood insurance, and lender-specific terms. Property tax and insurance defaults are Wake County, NC averages — your actual figures will vary. Always consult a licensed mortgage lender for accurate numbers. <a href="trusted-partners.html" style="color:var(--navy);font-weight:600;">Butch has trusted local lenders</a> he's happy to introduce you to.</p>
+      <p><strong style="color:var(--navy);"><i class="fa-solid fa-circle-info" style="color:var(--gold);margin-right:6px;"></i>Important Disclaimer</strong> — This calculator provides rough estimates for planning purposes only and does not constitute a loan offer, pre-qualification, or commitment of any kind. Butch Dyer is a licensed REALTOR®, not a mortgage lender or broker. Actual payments will differ based on your credit score, final loan terms, PMI (if applicable), flood insurance, and other lender-specific factors. Property tax and insurance defaults reflect Wake County, NC averages — your actual figures will vary by municipality and property. Always consult a licensed mortgage lender for accurate figures. <a href="trusted-partners.html" style="color:var(--navy);font-weight:600;">Butch has lenders he trusts</a> and is happy to make an introduction.</p>
     </div>
 
   </div>
@@ -389,7 +442,7 @@
         <div class="footer-compliance">
           <div id="brokerage-badge" class="footer-badge-box">KW Keller Williams</div>
           <div class="footer-eho" title="Equal Housing Opportunity">EHO</div>
-          <div class="footer-legal-text">Licensed in North Carolina &nbsp;·&nbsp; NCREC License #XXXXXX</div>
+          <div class="footer-legal-text">Licensed in North Carolina &nbsp;·&nbsp; NCREC License #323418</div>
           <div class="footer-legal-text">Working with Real Estate Agents Disclosure available upon request.</div>
         </div>
         <div class="footer-copyright">&copy; 2025 Butch Dyer. All rights reserved.</div>
@@ -411,15 +464,27 @@
 
   // ── Defaults (editable here if rates change) ──────────────
   var DEFAULTS = {
-    price:   400000,   // home price $
-    downPct: 20,       // down payment %
-    term:    30,       // years
-    rate:    7.0,      // annual interest rate %
-    tax:     1.05,     // annual property tax rate % (Wake County, NC avg)
-    ins:     150       // monthly homeowners insurance $
+    price:   400000,
+    downPct: 5,       // matches Conventional default
+    term:    30,
+    rate:    7.0,
+    tax:     1.05,    // Wake County, NC avg
+    ins:     150,
+    hoa:     0,
+    addDown: 0
+  };
+
+  var LOAN_TYPE_MIN = { fha: 3.5, conventional: 5, va: 0, custom: null };
+
+  var LOAN_TYPE_HINTS = {
+    fha:          'FHA: 3.5% minimum down. Credit-friendly option — lender sets additional requirements. PMI required until 20% equity.',
+    conventional: 'Conventional: 5% minimum down. Below 20% typically requires PMI (not included in this estimate).',
+    va:           'VA loan: $0 down for eligible veterans and active-duty service members. A VA funding fee may apply — confirm with your lender.',
+    custom:       'Custom: Enter your own down payment amount or percentage.'
   };
 
   var dpMode = 'pct'; // 'pct' | 'dollar'
+  var activeLoanType = 'conventional';
 
   function parse(str) {
     return parseFloat(String(str).replace(/[^0-9.]/g, '')) || 0;
@@ -438,20 +503,23 @@
   function calculate() {
     var price   = parse(document.getElementById('mc-price').value);
     var dpRaw   = parse(document.getElementById('mc-dp').value);
+    var addDown = parse(document.getElementById('mc-add-down').value);
     var rate    = parseFloat(document.getElementById('mc-rate').value) || 0;
     var taxPct  = parseFloat(document.getElementById('mc-tax').value)  || 0;
     var ins     = parseFloat(document.getElementById('mc-ins').value)  || 0;
+    var hoa     = parseFloat(document.getElementById('mc-hoa').value)  || 0;
     var termBtn = document.querySelector('.mc-term-btn.active');
     var term    = termBtn ? parseInt(termBtn.dataset.term) : 30;
 
     var downDollar, downPct;
     if (dpMode === 'pct') {
       downPct    = Math.min(100, Math.max(0, dpRaw));
-      downDollar = price * downPct / 100;
+      downDollar = (price * downPct / 100) + addDown;
     } else {
-      downDollar = Math.min(price, Math.max(0, dpRaw));
+      downDollar = Math.min(price, Math.max(0, dpRaw)) + addDown;
       downPct    = price > 0 ? (downDollar / price * 100) : 0;
     }
+    downDollar = Math.min(downDollar, price);
 
     var loan = Math.max(0, price - downDollar);
     var r = rate / 100 / 12;
@@ -466,16 +534,17 @@
     }
 
     var monthlyTax = (price * taxPct / 100) / 12;
-    var total = pi + monthlyTax + ins;
+    var total = pi + monthlyTax + ins + hoa;
+    var downPctDisplay = price > 0 ? (downDollar / price * 100).toFixed(0) : 0;
 
-    // Update output elements
     set('mc-out-pi',         fmt(pi));
     set('mc-out-tax',        fmt(monthlyTax));
     set('mc-out-ins',        fmt(ins));
+    set('mc-out-hoa',        hoa > 0 ? fmt(hoa) : '$0');
     set('mc-out-total',      total > 0 ? fmt(total) : '—');
     set('mc-out-total-hero', total > 0 ? fmt(total) : '—');
     set('mc-out-price',      fmt(price));
-    set('mc-out-down',       fmt(downDollar) + ' (' + downPct.toFixed(0) + '%)');
+    set('mc-out-down',       fmt(downDollar) + ' (' + downPctDisplay + '%)');
     set('mc-out-loan',       fmt(loan));
     set('mc-out-term',       term + ' years');
     set('mc-out-rate',       rate.toFixed(2) + '% / yr');
@@ -486,22 +555,25 @@
       var bpi  = document.getElementById('mc-bar-pi');
       var btax = document.getElementById('mc-bar-tax');
       var bins = document.getElementById('mc-bar-ins');
+      var bhoa = document.getElementById('mc-bar-hoa');
       if (bpi)  bpi.style.width  = pct(pi);
       if (btax) btax.style.width = pct(monthlyTax);
       if (bins) bins.style.width = pct(ins);
+      if (bhoa) bhoa.style.width = pct(hoa);
     }
 
     // Dim zero rows
     var rowTax = document.getElementById('mc-row-tax');
     var rowIns = document.getElementById('mc-row-ins');
+    var rowHoa = document.getElementById('mc-row-hoa');
     if (rowTax) rowTax.style.opacity = monthlyTax > 0 ? '1' : '0.35';
     if (rowIns) rowIns.style.opacity = ins > 0 ? '1' : '0.35';
+    if (rowHoa) rowHoa.style.opacity = hoa > 0 ? '1' : '0.35';
   }
 
   function setDpAffix(mode) {
     var wrap = document.getElementById('mc-dp-affix');
     if (!wrap) return;
-    // Remove existing affix spans
     wrap.querySelectorAll('.mc-prefix, .mc-suffix').forEach(function (el) { el.remove(); });
     wrap.classList.remove('has-prefix', 'has-suffix');
     if (mode === 'dollar') {
@@ -513,22 +585,56 @@
     }
   }
 
+  function applyLoanType(type) {
+    activeLoanType = type;
+    var minPct  = LOAN_TYPE_MIN[type];
+    var hintEl  = document.getElementById('mc-loan-type-hint');
+    var dpInput = document.getElementById('mc-dp');
+    var modeLabel = document.getElementById('mc-dp-mode-label');
+
+    if (hintEl) hintEl.textContent = LOAN_TYPE_HINTS[type];
+
+    if (minPct !== null) {
+      dpMode = 'pct';
+      dpInput.value = minPct;
+      setDpAffix('pct');
+      document.querySelectorAll('.mc-dp-toggle').forEach(function (b) {
+        b.classList.toggle('active', b.dataset.mode === 'pct');
+      });
+      if (modeLabel) modeLabel.textContent = '% of price';
+    }
+    // Clear additional down when switching loan types
+    document.getElementById('mc-add-down').value = '';
+    calculate();
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     // Set defaults
-    document.getElementById('mc-price').value = DEFAULTS.price.toLocaleString('en-US');
-    document.getElementById('mc-dp').value    = DEFAULTS.downPct;
-    document.getElementById('mc-rate').value  = DEFAULTS.rate;
-    document.getElementById('mc-tax').value   = DEFAULTS.tax;
-    document.getElementById('mc-ins').value   = DEFAULTS.ins;
+    document.getElementById('mc-price').value   = DEFAULTS.price.toLocaleString('en-US');
+    document.getElementById('mc-dp').value      = DEFAULTS.downPct;
+    document.getElementById('mc-rate').value    = DEFAULTS.rate;
+    document.getElementById('mc-tax').value     = DEFAULTS.tax;
+    document.getElementById('mc-ins').value     = DEFAULTS.ins;
+    document.getElementById('mc-hoa').value     = DEFAULTS.hoa || '';
+    document.getElementById('mc-add-down').value = DEFAULTS.addDown || '';
+
+    // Loan type buttons
+    document.querySelectorAll('.mc-loan-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.mc-loan-btn').forEach(function (b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        applyLoanType(this.dataset.type);
+      });
+    });
 
     // Down payment mode toggle
     document.querySelectorAll('.mc-dp-toggle').forEach(function (btn) {
       btn.addEventListener('click', function () {
         if (this.dataset.mode === dpMode) return;
-        var newMode  = this.dataset.mode;
-        var price    = parse(document.getElementById('mc-price').value);
-        var curVal   = parse(document.getElementById('mc-dp').value);
-        var dpInput  = document.getElementById('mc-dp');
+        var newMode   = this.dataset.mode;
+        var price     = parse(document.getElementById('mc-price').value);
+        var curVal    = parse(document.getElementById('mc-dp').value);
+        var dpInput   = document.getElementById('mc-dp');
         var modeLabel = document.getElementById('mc-dp-mode-label');
 
         if (newMode === 'dollar') {
@@ -557,7 +663,7 @@
     });
 
     // Live recalculate on any input change
-    ['mc-price', 'mc-dp', 'mc-rate', 'mc-tax', 'mc-ins'].forEach(function (id) {
+    ['mc-price', 'mc-dp', 'mc-add-down', 'mc-rate', 'mc-tax', 'mc-ins', 'mc-hoa'].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) el.addEventListener('input', calculate);
     });
@@ -581,6 +687,14 @@
         var v = parse(this.value);
         if (v > 0) this.value = v.toLocaleString('en-US');
       }
+      calculate();
+    });
+
+    // Format additional down on blur
+    var addDownEl = document.getElementById('mc-add-down');
+    addDownEl.addEventListener('blur', function () {
+      var v = parse(this.value);
+      if (v > 0) this.value = v.toLocaleString('en-US');
       calculate();
     });
 
