@@ -232,21 +232,31 @@ var CATEGORIES = [
     label: 'Home Inspectors',
     icon:  'fa-solid fa-magnifying-glass-chart',
     intro: 'A good inspector finds everything — the things you need to know before you commit. These inspectors are thorough, write readable reports, and will walk you through the house after the inspection so nothing is a mystery.'
-  }
-  /* ── Future categories — uncomment and fill in to activate ──
-  ,{
+  },
+  {
+    id:    'roofing',
+    label: 'Roofing Contractors',
+    icon:  'fa-solid fa-house-chimney',
+    intro: 'Whether it\'s a repair before closing or a full replacement, these roofers show up when they say they will, do clean work, and won\'t oversell you on things you don\'t need.'
+  },
+  {
+    id:    'staging',
+    label: 'Home Stagers',
+    icon:  'fa-solid fa-couch',
+    intro: 'A well-staged home sells faster and for more money. These stagers know how to make a house feel like someone\'s dream home — without you overspending to get there.'
+  },
+  {
     id:    'movers',
     label: 'Moving Companies',
     icon:  'fa-solid fa-truck-moving',
-    intro: '⚠️ Placeholder intro — Butch to provide text'
+    intro: 'Moving day is stressful enough without wondering if your things will arrive in one piece. These movers are careful, on time, and easy to reach if something comes up.'
   },
   {
-    id:    'insurance',
-    label: 'Home Insurance',
-    icon:  'fa-solid fa-shield-halved',
-    intro: '⚠️ Placeholder intro — Butch to provide text'
+    id:    'storage',
+    label: 'Storage Solutions',
+    icon:  'fa-solid fa-warehouse',
+    intro: 'Need somewhere to keep things between homes? These storage partners are secure, flexible, and easy to access whenever you need to grab something.'
   }
-  */
 ];
 
 var PARTNERS = [
@@ -312,22 +322,111 @@ var PARTNERS = [
     urlLabel:    'Visit Site',
     icon:        'fa-solid fa-magnifying-glass-chart',
     placeholder: true
-  }
+  },
 
-  /* ── FUTURE: MOVERS (uncomment to activate) ──────────────────
-  ,{
+  /* ── ROOFING CONTRACTORS ─────────────────────────────────── */
+  {
+    category:    'roofing',
+    company:     '⚠️ Roofing Company Name',
+    person:      '⚠️ Contact Name · Title',
+    blurb:       '⚠️ Placeholder — Butch to provide 2–3 sentences describing why he recommends this roofer. Repairs, replacements, or both?',
+    phone:       '',
+    email:       '',
+    url:         '#',
+    urlLabel:    'Visit Site',
+    icon:        'fa-solid fa-house-chimney',
+    placeholder: true
+  },
+  {
+    category:    'roofing',
+    company:     '⚠️ Roofing Company Name',
+    person:      '⚠️ Contact Name · Title',
+    blurb:       '⚠️ Placeholder — Butch to provide 2–3 sentences describing this roofer.',
+    phone:       '',
+    email:       '',
+    url:         '#',
+    urlLabel:    'Visit Site',
+    icon:        'fa-solid fa-house-chimney',
+    placeholder: true
+  },
+
+  /* ── HOME STAGERS ─────────────────────────────────────────── */
+  {
+    category:    'staging',
+    company:     '⚠️ Staging Company Name',
+    person:      '⚠️ Contact Name · Title',
+    blurb:       '⚠️ Placeholder — Butch to provide 2–3 sentences describing this stager. Full-service or consultation only?',
+    phone:       '',
+    email:       '',
+    url:         '#',
+    urlLabel:    'Visit Site',
+    icon:        'fa-solid fa-couch',
+    placeholder: true
+  },
+  {
+    category:    'staging',
+    company:     '⚠️ Staging Company Name',
+    person:      '⚠️ Contact Name · Title',
+    blurb:       '⚠️ Placeholder — Butch to provide 2–3 sentences describing this stager.',
+    phone:       '',
+    email:       '',
+    url:         '#',
+    urlLabel:    'Visit Site',
+    icon:        'fa-solid fa-couch',
+    placeholder: true
+  },
+
+  /* ── MOVING COMPANIES ─────────────────────────────────────── */
+  {
     category:    'movers',
     company:     '⚠️ Moving Company Name',
-    person:      '',
-    blurb:       '⚠️ Placeholder',
+    person:      '⚠️ Contact Name · Title',
+    blurb:       '⚠️ Placeholder — Butch to provide 2–3 sentences describing this mover. Local, long-distance, or both?',
     phone:       '',
     email:       '',
     url:         '#',
     urlLabel:    'Get a Quote',
     icon:        'fa-solid fa-truck-moving',
     placeholder: true
+  },
+  {
+    category:    'movers',
+    company:     '⚠️ Moving Company Name',
+    person:      '⚠️ Contact Name · Title',
+    blurb:       '⚠️ Placeholder — Butch to provide 2–3 sentences describing this mover.',
+    phone:       '',
+    email:       '',
+    url:         '#',
+    urlLabel:    'Get a Quote',
+    icon:        'fa-solid fa-truck-moving',
+    placeholder: true
+  },
+
+  /* ── STORAGE SOLUTIONS ────────────────────────────────────── */
+  {
+    category:    'storage',
+    company:     '⚠️ Storage Company Name',
+    person:      '⚠️ Contact Name · Title',
+    blurb:       '⚠️ Placeholder — Butch to provide 2–3 sentences describing this storage partner. Climate-controlled? Short vs. long term?',
+    phone:       '',
+    email:       '',
+    url:         '#',
+    urlLabel:    'Visit Site',
+    icon:        'fa-solid fa-warehouse',
+    placeholder: true
+  },
+  {
+    category:    'storage',
+    company:     '⚠️ Storage Company Name',
+    person:      '⚠️ Contact Name · Title',
+    blurb:       '⚠️ Placeholder — Butch to provide 2–3 sentences describing this storage partner.',
+    phone:       '',
+    email:       '',
+    url:         '#',
+    urlLabel:    'Visit Site',
+    icon:        'fa-solid fa-warehouse',
+    placeholder: true
   }
-  */
 ];
 
 /* ── Renderer (no edits needed below this line) ── */
@@ -341,6 +440,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var section = document.createElement('div');
     section.className = 'tp-category';
+    section.id = 'tp-cat-' + cat.id;
 
     var header = document.createElement('div');
     header.className = 'tp-cat-header';
